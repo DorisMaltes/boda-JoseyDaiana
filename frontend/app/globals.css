@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #F9F1E7;
+  --brown-deep: #2C2416;
+  --taupe: #8C7B68;
+  --gold: #C9A96E;
+  --parchment: #E8DDD0;
+}
+
+@theme inline {
+  --color-background: var(--ivory);
+  --color-foreground: var(--brown-deep);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ivory);
+  color: var(--brown-deep);
+  font-family: var(--font-body), sans-serif;
+  position: relative;
+}
+
+/* Textura global sobre toda la página */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/assets/textures/esta-textura.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+  opacity: .05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Todo el contenido por encima de la textura */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes expandLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease both;
+}
+
+.animate-expand-line {
+  animation: expandLine 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Delays escalonados */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }

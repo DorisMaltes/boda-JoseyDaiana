@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Env files — NEVER commit secrets
+.env
+.env.local
+.env*.local
+
+# Next.js
+**/.next/
+**/out/
+**/build/
+
+# TypeScript
+*.tsbuildinfo
+**/next-env.d.ts
+
+# Misc
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# Claude Code
+.claude/
