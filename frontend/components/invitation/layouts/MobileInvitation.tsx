@@ -5,6 +5,7 @@ import IntroVideo from '../sections/IntroVideo';
 import HeroSection from '../sections/HeroSection';
 import SectionSeparator from '@/components/ui/SectionSeparator';
 import NosotrosSection from '../sections/NosotrosSection';
+import DetallesEventoSection from '../sections/DetallesEventoSection';
 import TopNavBar from '@/components/ui/TopNavBar';
 import type { Guest } from '@/types';
 
@@ -37,6 +38,7 @@ export default function MobileInvitation({ guest }: Props) {
         />
         <SectionSeparator />
         <NosotrosSection />
+        <DetallesEventoSection />
         {/* Próximas secciones mobile se agregan aquí */}
       </div>
 
