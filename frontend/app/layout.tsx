@@ -1,23 +1,22 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Lato } from 'next/font/google';
+import { MonteCarlo, Gayathri } from 'next/font/google';
 import './globals.css';
 
-const cormorant = Cormorant_Garamond({
-  variable: '--font-display',
+const monteCarlo = MonteCarlo({
+  variable: '--font-cursiva',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: '400',
 });
 
-const lato = Lato({
-  variable: '--font-body',
+const gayathri = Gayathri({
+  variable: '--font-principal',
   subsets: ['latin'],
-  weight: ['300', '400', '700'],
+  weight: ['100', '400', '700'],
 });
 
 export const metadata: Metadata = {
-  title: 'Boda',
-  description: 'Invitación de boda',
+  title: 'Boda José & Daiana',
+  description: 'Invitación de boda — 14 de Noviembre, Puebla',
 };
 
 export default function RootLayout({
@@ -28,9 +27,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${cormorant.variable} ${lato.variable} h-full antialiased`}
+      className={`${monteCarlo.variable} ${gayathri.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[#FAF7F2] text-[#2C2416]">{children}</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

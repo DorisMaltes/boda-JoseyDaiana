@@ -1,61 +1,60 @@
 @import "tailwindcss";
 
+/* ─── Paleta de colores ─────────────────────────────────── */
 :root {
-  --ivory: #F9F1E7;
-  --brown-deep: #2C2416;
-  --taupe: #8C7B68;
-  --gold: #C9A96E;
-  --parchment: #E8DDD0;
+  --ivory:     #F9F1E7;   /* fondo principal */
+  --beige:     #E6BB9F;   /* beige cálido */
+  --mostaza:   #C78B31;   /* mostaza / dorado */
+  --terracota: #B86742;   /* terracota */
+  --azul:      #1A385D;   /* azul oscuro */
+  --verde:     #203D21;   /* verde oscuro */
 }
 
+/* ─── Tipografía ────────────────────────────────────────── */
+/* --font-cursiva   → MonteCarlo  (nombres, títulos elegantes) */
+/* --font-principal → Gayathri    (todo lo demás)              */
+
+/* ─── Tema Tailwind ─────────────────────────────────────── */
 @theme inline {
   --color-background: var(--ivory);
-  --color-foreground: var(--brown-deep);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-cursiva:     var(--font-cursiva);
+  --font-principal:   var(--font-principal);
 }
 
-/* Base */
+/* ─── Base ──────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--ivory);
-  color: var(--brown-deep);
-  font-family: var(--font-body), sans-serif;
+  color: var(--azul);
+  font-family: var(--font-principal), sans-serif;
   position: relative;
 }
 
-/* Textura global sobre toda la página */
+/* ─── Textura global (5% opacidad) ─────────────────────── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: url('/assets/textures/esta-textura.png');
-  background-repeat:no-repeat;
-  background-size:cover;
-  opacity: .05;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Todo el contenido por encima de la textura */
 body > * {
   position: relative;
   z-index: 1;
 }
 
-/* Animaciones de entrada */
+/* ─── Animaciones de entrada ────────────────────────────── */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -68,19 +67,11 @@ body > * {
   to   { transform: scaleX(1); }
 }
 
-.animate-fade-up {
-  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+.animate-fade-up     { animation: fadeUp     1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in     { animation: fadeIn     1.2s ease both; }
+.animate-expand-line { animation: expandLine 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-.animate-fade-in {
-  animation: fadeIn 1.2s ease both;
-}
-
-.animate-expand-line {
-  animation: expandLine 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Delays escalonados */
+/* ─── Delays escalonados ────────────────────────────────── */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
