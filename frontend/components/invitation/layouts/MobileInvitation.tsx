@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import IntroVideo from '../sections/IntroVideo';
 import HeroSection from '../sections/HeroSection';
+import SectionSeparator from '@/components/ui/SectionSeparator';
+import NosotrosSection from '../sections/NosotrosSection';
 import TopNavBar from '@/components/ui/TopNavBar';
 import type { Guest } from '@/types';
 
@@ -33,6 +35,8 @@ export default function MobileInvitation({ guest }: Props) {
           nombreFamilia={guest.nombreFamilia}
           pasesAsignados={guest.pasesAsignados}
         />
+        <SectionSeparator />
+        <NosotrosSection />
         {/* Próximas secciones mobile se agregan aquí */}
       </div>
 
