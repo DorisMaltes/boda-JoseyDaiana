@@ -15,10 +15,19 @@
 /* --font-principal → Gayathri    (todo lo demás)              */
 
 /* ─── Tema Tailwind ─────────────────────────────────────── */
+/* Registrar aquí expone las variables como clases de Tailwind:
+   bg-ivory, text-azul, font-cursiva, etc.                    */
 @theme inline {
-  --color-background: var(--ivory);
-  --font-cursiva:     var(--font-cursiva);
-  --font-principal:   var(--font-principal);
+  --color-ivory:     var(--ivory);
+  --color-beige:     var(--beige);
+  --color-mostaza:   var(--mostaza);
+  --color-terracota: var(--terracota);
+  --color-azul:      var(--azul);
+  --color-verde:     var(--verde);
+
+  --font-cursiva:            var(--font-cursiva);
+  --font-cursiva-secundario: var(--font-cursiva-secundario);
+  --font-principal:          var(--font-principal);
 }
 
 /* ─── Base ──────────────────────────────────────────────── */

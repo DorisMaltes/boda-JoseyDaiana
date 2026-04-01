@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { MonteCarlo, Gayathri } from 'next/font/google';
+import { MonteCarlo, Gayathri,Parisienne } from 'next/font/google';
 import './globals.css';
 
 const monteCarlo = MonteCarlo({
@@ -12,6 +12,12 @@ const gayathri = Gayathri({
   variable: '--font-principal',
   subsets: ['latin'],
   weight: ['100', '400', '700'],
+});
+
+const parisienne = Parisienne ({
+  variable: '--font-cursiva-secundario',
+  subsets: ['latin'],
+  weight: '400',
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${monteCarlo.variable} ${gayathri.variable} h-full antialiased`}
+      className={`${monteCarlo.variable} ${gayathri.variable} ${parisienne.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>
