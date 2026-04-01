@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import IntroVideo from '../sections/IntroVideo';
 import HeroSection from '../sections/HeroSection';
+import BottomNavBar from '@/components/ui/BottomNavBar';
 import type { Guest } from '@/types';
 
 interface Props {
@@ -22,6 +23,7 @@ export default function MobileInvitation({ guest }: Props) {
 
       {/* Contenido de la invitación — aparece tras el video */}
       <div
+        className="pb-16"
         style={{
           opacity: introFinished ? 1 : 0,
           transition: 'opacity 0.8s ease',
@@ -33,6 +35,9 @@ export default function MobileInvitation({ guest }: Props) {
         />
         {/* Próximas secciones mobile se agregan aquí */}
       </div>
+
+      {/* Navbar hamburguesa fija en la parte inferior */}
+      <BottomNavBar />
 
     </div>
   );

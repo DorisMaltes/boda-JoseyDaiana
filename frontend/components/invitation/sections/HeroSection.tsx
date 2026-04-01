@@ -9,32 +9,27 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
   return (
     <section className="relative flex flex-col overflow-hidden min-h-svh bg-ivory">
 
-      {/* ── Saludo personalizado ───────────────────────────── */}
-      <p className="animate-fade-in delay-100 text-center pt-5 px-6 font-principal text-[0.6rem] tracking-[0.2em] uppercase text-terracota">
-        {nombreFamilia} &nbsp;·&nbsp; {pasesAsignados} {pasesAsignados === 1 ? 'pase' : 'pases'}
-      </p>
-
-      {/* ── Flores + Sello ─────────────────────────────────── */}
-      <div className="relative w-full h-[240px] shrink-0">
+      {/* ── Flores (solo esquinas, sin altura fija) ─────────── */}
+      <div className="relative w-full h-[200px] shrink-0">
 
         {/* Flor izquierda */}
         <div
-          className="animate-fade-in delay-200 absolute top-0 left-0"
-          style={{ width: '241px', height: '214px', aspectRatio: '116/103' }}
+          className="animate-fade-in delay-200 absolute -top-6 -left-6 rotate-90"
+          style={{ width: '16.3125rem', height: '14.4375rem', aspectRatio: '116/103' }}
         >
           <Image
             src="/assets/componentes/flor1.png"
             alt=""
             fill
-            className="object-contain object-left-top"
+            className="object-contain object-top-left"
             priority
           />
         </div>
 
         {/* Flor derecha */}
         <div
-          className="animate-fade-in delay-200 absolute top-0 right-0"
-          style={{ width: '261px', height: '231px', aspectRatio: '87/77', transformOrigin: 'top right' }}
+          className="animate-fade-in delay-200 absolute -top-6 -right-6"
+          style={{ width: '15.0625rem', height: '13.375rem', aspectRatio: '87/77', transformOrigin: 'top right' }}
         >
           <Image
             src="/assets/componentes/flor2.png"
@@ -44,21 +39,22 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
             priority
           />
         </div>
+      </div>
+
+      {/* ── Monograma + Texto + Hojita + Fecha*/}
+      <div className="relative z-10 flex flex-col items-center -mt-16 pb-6">
 
         {/* Sello / Monograma */}
-        <div className="animate-fade-up delay-400 absolute -bottom-7 left-1/2 -translate-x-1/2 w-[76px] h-[76px] z-10">
+        <div className="animate-fade-up delay-400 w-[76px] h-[76px] mb-4">
           <Image
             src="/assets/componentes/monogramaSello.png"
             alt="Monograma"
-            fill
+            width={76}
+            height={76}
             className="object-contain"
             priority
           />
         </div>
-      </div>
-
-      {/* ── Texto central ──────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col items-center pt-11 pb-6">
 
         {/* "NUESTRA BODA" */}
         <p className="animate-fade-up delay-500 font-principal text-[0.6rem] tracking-[0.35em] uppercase text-azul opacity-60 mb-2">
@@ -86,7 +82,7 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
         </div>
 
         {/* Fecha */}
-        <p className="animate-fade-up delay-700 font-principal text-[0.62rem] tracking-[0.28em] uppercase text-azul opacity-75">
+        <p className="animate-fade-up delay-700 font-principal text-[0.62rem] tracking-[0.28em] uppercase text-mostaza font-bold">
           14 de noviembre 2026
         </p>
       </div>
