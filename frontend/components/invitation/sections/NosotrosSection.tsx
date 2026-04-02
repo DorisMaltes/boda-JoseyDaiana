@@ -115,9 +115,7 @@ export default function NosotrosSection() {
       </div>
 
       {/* ── Separador inferior ────────────────────────────── */}
-      <div className="w-full">
-        <SectionSeparator />
-      </div>
+      
 
     </section>
   );

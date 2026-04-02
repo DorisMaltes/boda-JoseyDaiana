@@ -3,11 +3,11 @@ import SectionSeparator from '@/components/ui/SectionSeparator';
 
 export default function DetallesEventoSection() {
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
+    <section className="relative flex flex-col items-center  bg-ivory px-6 pt-10 overflow-visible ">
 
       {/* ── Ornamento superior centrado con líneas ─────────── */}
-      <div className="flex items-center gap-3 w-full mb-8">
-        <div className="flex-1 h-px bg-azul/30" />
+      <div className="flex flex-col items-center w-full mb-8">
+        
         <Image
           src="/assets/componentes/detallesdeleventoSeparador.png"
           alt=""
@@ -15,16 +15,16 @@ export default function DetallesEventoSection() {
           height={70}
           className="shrink-0"
         />
-        <div className="flex-1 h-px bg-azul/30" />
+        
       </div>
 
       {/* ── Título ─────────────────────────────────────────── */}
-      <h2 className="font-cursiva text-[3.2rem] leading-none text-azul text-left w-full mb-6">
+      <h2 className="font-cursiva text-6xl leading-none text-azul text-center w-full mb-6">
         Detalles del Evento
       </h2>
 
       {/* ── Subtítulo ──────────────────────────────────────── */}
-      <p className="font-principal text-[0.95rem] text-azul text-center leading-relaxed mb-8 px-4">
+      <p className="font-principal text-xl text-azul text-center leading-relaxed mb-8 px-4 pt-5">
         Todos los momentos de nuestra<br />boda se llevarán a cabo en:
       </p>
 
@@ -42,7 +42,7 @@ export default function DetallesEventoSection() {
         </div>
 
         {/* Marco postcard blanco */}
-        <div className="bg-white p-2 shadow-sm">
+        <div className="bg-white p-2 shadow-[5px_4px_4px_0px_rgba(0,0,0,0.1)]">
           <div className="relative w-full h-[230px]">
             <Image
               src="/assets/photos/fotoHacienda.jpg"
@@ -55,44 +55,39 @@ export default function DetallesEventoSection() {
       </div>
 
       {/* ── Nombre del lugar ───────────────────────────────── */}
-      <h3 className="font-principal text-[1.1rem] font-bold text-azul text-center tracking-wide leading-snug mb-1 px-4">
+      <h3 className="font-principal text-2xl font-regular text-azul text-center tracking-wide leading-snug mb-1 px-4">
         Hacienda San Antonio Arenillas
       </h3>
 
       {/* ── Dirección ─────────────────────────────────────── */}
-      <p className="font-principal text-[0.8rem] text-azul/70 text-center mb-10">
+      <p className="font-principal text-lg text-azul/70 text-center mb-10 font-thin">
         Heroica Puebla de Zaragoza, Pue.
       </p>
 
       {/* ── Botón Ver Mapa ─────────────────────────────────── */}
-      <a
-        href="https://maps.google.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-cursiva text-[1.4rem] text-white px-10 py-3 mb-12"
-        style={{
-          backgroundColor: '#203D21',
-          borderRadius: '30px',
-          border: '1px solid #FFF',
-        }}
-      >
-        Ver Mapa
-      </a>
+      
+        <a
+          href="https://share.google/rEDTrJ4AWbXjHvRv2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block px-6 py-4 text-[26px] text-white font-cursiva-secundario border border-white rounded-full bg-[#203D21] text-center"
+        >
+          Ver Mapa
+        </a>
 
-      {/* ── Flor4 encima del separador ─────────────────────── */}
-      <div className="relative z-10 -mb-10">
-        <Image
-          src="/assets/componentes/flor4.png"
-          alt=""
-          width={260}
-          height={140}
-          className="w-[260px] h-auto"
-        />
-      </div>
-
-      {/* ── Separador inferior ────────────────────────────── */}
-      <div className="w-full">
-        <SectionSeparator />
+      {/* ── Separador + flor4 superpuesta ─────────────────── */}
+      <div className="relative w-full mt-26">
+        
+        {/* Flor4 centrada encima del separador */}
+        <div className="absolute inset-x-0 top-0 -translate-y-1/2 flex justify-center z-10 pointer-events-none">
+          <Image
+            src="/assets/componentes/flor4.png"
+            alt=""
+            width={119}
+            height={120}
+            className="w-[119px] h-auto rotate-270"
+          />
+        </div>
       </div>
 
     </section>

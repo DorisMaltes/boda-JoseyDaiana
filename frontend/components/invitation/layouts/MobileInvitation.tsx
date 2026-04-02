@@ -6,6 +6,12 @@ import HeroSection from '../sections/HeroSection';
 import SectionSeparator from '@/components/ui/SectionSeparator';
 import NosotrosSection from '../sections/NosotrosSection';
 import DetallesEventoSection from '../sections/DetallesEventoSection';
+import ItinerarioSection from '../sections/ItinerarioSection';
+import CodigoVestimentaSection from '../sections/CodigoVestimentaSection';
+import MesaRegalosSection from '../sections/MesaRegalosSection';
+import HospedajeSection from '../sections/HospedajeSection';
+import MaquillajeSugerenciaSection from '../sections/MaquillajeSugerenciaSection';
+// import GaleriaSection from '../sections/GaleriaSection'; // WIP — probando Embla Carousel
 import TopNavBar from '@/components/ui/TopNavBar';
 import type { Guest } from '@/types';
 
@@ -38,7 +44,21 @@ export default function MobileInvitation({ guest }: Props) {
         />
         <SectionSeparator />
         <NosotrosSection />
+        <SectionSeparator />
         <DetallesEventoSection />
+        <SectionSeparator />
+        <ItinerarioSection />
+        <SectionSeparator />
+        <CodigoVestimentaSection />
+        <SectionSeparator />
+        <MesaRegalosSection />
+        <SectionSeparator />
+        <HospedajeSection />
+        <SectionSeparator />
+        <MaquillajeSugerenciaSection />
+        <SectionSeparator />
+        {/* <GaleriaSection /> */}
+        {/* <SectionSeparator /> */}
         {/* Próximas secciones mobile se agregan aquí */}
       </div>
 
