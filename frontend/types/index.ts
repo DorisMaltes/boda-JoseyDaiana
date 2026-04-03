@@ -1,4 +1,5 @@
 export type RsvpStatus = 'pendiente' | 'confirmado' | 'declinado';
+export type Mensaje = "hola";
 
 export interface Guest {
   id: number;
@@ -9,7 +10,7 @@ export interface Guest {
   statusRSVP: RsvpStatus;
   respondedAt?: string | null;
   created_at: string;
-  mensajeParanovios?: string;
+  mensajeParanovios?: Mensaje ;
   
 }
 
@@ -24,5 +25,5 @@ export interface RsvpResponse {
   success: boolean;
   statusRSVP: RsvpStatus;
   pasesConfirmados: number;
-  mensajeParanovios?: string;
+  mensajeParanovios?: Mensaje;
 }

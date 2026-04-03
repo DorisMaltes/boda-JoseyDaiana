@@ -11,7 +11,7 @@ interface Props {
   pasesAsignados: number;
   pasesConfirmados: number;
   statusRSVP: RsvpStatus;
-  mensajeParanovios: string;
+  mensajeParanovios?: string;
 }
 
 /* ── Dropdown personalizado ───────────────────────────────── */
