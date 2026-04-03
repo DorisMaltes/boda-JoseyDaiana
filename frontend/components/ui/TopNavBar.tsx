@@ -61,7 +61,7 @@ export default function TopNavBar() {
         style={{ transform: open ? 'translateY(0)' : 'translateY(-110%)' }}
       >
         <nav className="flex flex-col gap-3">
-          {NAV_ITEMS.map((item) => (
+          {NAV_ITEMS.map((item, i) => (
             <button
               key={item.label}
               onClick={() => {
@@ -74,6 +74,11 @@ export default function TopNavBar() {
                 }
               }}
               className="text-left font-principal text-xl leading-none text-azul tracking-wide hover:text-mostaza transition-colors"
+              style={{
+                opacity:    open ? 1 : 0,
+                transform:  open ? 'translateY(0)' : 'translateY(-10px)',
+                transition: `opacity 0.35s ease ${open ? i * 40 : 0}ms, transform 0.35s ease ${open ? i * 40 : 0}ms, color 0.2s`,
+              }}
             >
               {item.label}
             </button>

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  //configuracion aca
+  devIndicators: false,
 };
 
 export default nextConfig;

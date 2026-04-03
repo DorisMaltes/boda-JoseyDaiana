@@ -15,6 +15,7 @@ import GaleriaSection from '../sections/GaleriaSection';
 import CountdownSection from '../sections/CountdownSection';
 import RSVPSection from '../sections/RSVPSection';
 import TopNavBar from '@/components/ui/TopNavBar';
+import MusicPlayer from '@/components/ui/MusicPlayer';
 import type { Guest } from '@/types';
 
 interface Props {
@@ -86,6 +87,9 @@ export default function MobileInvitation({ guest }: Props) {
 
       {/* Navbar hamburguesa fija en la parte superior */}
       <TopNavBar />
+
+      {/* Reproductor de música fijo inferior izquierdo */}
+      <MusicPlayer />
 
     </div>
   );
