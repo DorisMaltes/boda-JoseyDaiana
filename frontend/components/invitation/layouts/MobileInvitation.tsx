@@ -23,7 +23,7 @@ interface Props {
 }
 
 export default function MobileInvitation({ guest }: Props) {
-  const [introFinished, setIntroFinished] = useState(true);//false para mostrar video, true para NO mostrar video :))
+  const [introFinished, setIntroFinished] = useState(false);//false para mostrar video, true para NO mostrar video :))
 
   return (
     <div className="flex flex-col w-full">
