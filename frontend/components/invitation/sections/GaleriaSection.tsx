@@ -178,13 +178,13 @@ export default function GaleriaSection() {
       </h2>
 
       <div className="flex items-center justify-center gap-4 mb-8">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-azul/40">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-azul">
           <path d="M15 18l-6-6 6-6" />
         </svg>
-        <p className="font-principal text-sm text-azul/50 tracking-wide">
+        <p className="font-principal text-lg text-azul tracking-wide font-thin">
           Desliza para ver más
         </p>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-azul/40">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-azul">
           <path d="M9 18l6-6-6-6" />
         </svg>
       </div>
