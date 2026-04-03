@@ -34,18 +34,24 @@ export async function upsertRsvp(payload: RsvpPayload): Promise<Guest> {
   const finalPases = payload.status === 'declinado' ? 0 : payload.pasesConfirmados;
 
   // 3. Actualizar — siempre sobreescribe, la última respuesta gana
+  const updateData: Record<string, unknown> = {
+    statusRSVP: payload.status,
+    pasesConfirmados: finalPases,
+  };
+  if (payload.mensajeParanovios !== undefined) {
+    updateData.mensajeParanovios = payload.mensajeParanovios;
+  }
+
   const { data, error: updateError } = await supabase
     .from(TABLE)
-    .update({
-      statusRSVP: payload.status,
-      pasesConfirmados: finalPases,
-    })
+    .update(updateData)
     .eq('token', payload.token)
     .select()
     .single();
 
   if (updateError || !data) {
-    throw new AppError(500, 'Error al guardar el RSVP');
+    console.error('[rsvp.service] updateError:', updateError);
+    throw new AppError(500, updateError?.message ?? 'Error al guardar el RSVP');
   }
 
   return data as Guest;

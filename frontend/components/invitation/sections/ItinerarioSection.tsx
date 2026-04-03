@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useInView } from '@/hooks/useInView';
 
 /* ── Datos del itinerario ─────────────────────────────────── */
 const EVENTOS = [
@@ -21,21 +21,8 @@ interface ItinerarioItemProps {
 }
 
 function ItinerarioItem({ hora, nombre, icono, index }: ItinerarioItemProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-      { threshold: 0.25 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  const delay = index * 180;
+  const { ref, visible } = useInView();
+  const delay = index * 150;
 
   return (
     <div
@@ -44,7 +31,7 @@ function ItinerarioItem({ hora, nombre, icono, index }: ItinerarioItemProps) {
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(28px)',
-        transition: `opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        transition: `opacity 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
       }}
     >
       {/* Icono — lado izquierdo */}

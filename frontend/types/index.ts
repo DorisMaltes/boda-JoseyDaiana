@@ -9,16 +9,20 @@ export interface Guest {
   statusRSVP: RsvpStatus;
   respondedAt?: string | null;
   created_at: string;
+  mensajeParanovios?: string;
+  
 }
 
 export interface RsvpPayload {
   token: string;
   status: 'confirmado' | 'declinado';
   pasesConfirmados: number;
+  mensajeParanovios?: string;
 }
 
 export interface RsvpResponse {
   success: boolean;
   statusRSVP: RsvpStatus;
   pasesConfirmados: number;
+  mensajeParanovios?: string;
 }

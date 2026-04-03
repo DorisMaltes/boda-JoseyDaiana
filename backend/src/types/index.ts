@@ -15,4 +15,5 @@ export interface RsvpPayload {
   token: string;
   status: 'confirmado' | 'declinado';
   pasesConfirmados: number;
+  mensajeParanovios?: string;
 }

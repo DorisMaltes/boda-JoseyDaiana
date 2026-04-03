@@ -11,7 +11,9 @@ import CodigoVestimentaSection from '../sections/CodigoVestimentaSection';
 import MesaRegalosSection from '../sections/MesaRegalosSection';
 import HospedajeSection from '../sections/HospedajeSection';
 import MaquillajeSugerenciaSection from '../sections/MaquillajeSugerenciaSection';
-// import GaleriaSection from '../sections/GaleriaSection'; // WIP — probando Embla Carousel
+import GaleriaSection from '../sections/GaleriaSection';
+import CountdownSection from '../sections/CountdownSection';
+import RSVPSection from '../sections/RSVPSection';
 import TopNavBar from '@/components/ui/TopNavBar';
 import type { Guest } from '@/types';
 
@@ -57,9 +59,17 @@ export default function MobileInvitation({ guest }: Props) {
         <SectionSeparator />
         <MaquillajeSugerenciaSection />
         <SectionSeparator />
-        {/* <GaleriaSection /> */}
-        {/* <SectionSeparator /> */}
-        {/* Próximas secciones mobile se agregan aquí */}
+        <GaleriaSection />
+        <SectionSeparator />
+        <CountdownSection />
+        <SectionSeparator />
+        <RSVPSection
+          token={guest.token}
+          nombreFamilia={guest.nombreFamilia}
+          pasesAsignados={guest.pasesAsignados}
+          pasesConfirmados={guest.pasesConfirmados}
+          statusRSVP={guest.statusRSVP}
+        />
       </div>
 
       {/* Navbar hamburguesa fija en la parte superior */}

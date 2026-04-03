@@ -6,6 +6,7 @@ const rsvpSchema = z.object({
   token: z.string().min(1),
   status: z.enum(['confirmado', 'declinado']),
   pasesConfirmados: z.number().int().min(0),
+  mensajeParanovios: z.string().optional(),
 });
 
 export async function submitRsvp(

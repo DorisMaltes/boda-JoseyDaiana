@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useInView } from '@/hooks/useInView';
 
 /* ── Datos de maquillistas ────────────────────────────────── */
 const MAQUILLISTAS = [
@@ -52,20 +52,7 @@ interface MaquilladoraCardProps {
 }
 
 function MaquilladoraCard({ nombre, descripcion, whatsapp, instagram, index }: MaquilladoraCardProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
+  const { ref, visible } = useInView();
   const delay = index * 120;
 
   return (
@@ -75,7 +62,7 @@ function MaquilladoraCard({ nombre, descripcion, whatsapp, instagram, index }: M
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(32px)',
-        transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
       }}
     >
       <p className="font-principal text-lg font-bold text-azul text-center tracking-[0.1em]">
