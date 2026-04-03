@@ -3,7 +3,7 @@ import SectionSeparator from '@/components/ui/SectionSeparator';
 
 export default function DetallesEventoSection() {
   return (
-    <section className="relative flex flex-col items-center  bg-ivory px-6 pt-10 overflow-visible ">
+    <section id="ceremonia" className="relative flex flex-col items-center  bg-ivory px-6 pt-10 overflow-visible ">
 
       {/* ── Ornamento superior centrado con líneas ─────────── */}
       <div className="flex flex-col items-center w-full mb-8">

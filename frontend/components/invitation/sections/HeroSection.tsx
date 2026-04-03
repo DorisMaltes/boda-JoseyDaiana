@@ -7,7 +7,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSectionProps) {
   return (
-    <section className="relative flex flex-col overflow-hidden min-h-svh bg-ivory">
+    <section id="inicio" className="relative flex flex-col overflow-hidden min-h-svh bg-ivory">
 
       {/* ── Flores (solo esquinas, sin altura fija) ─────────── */}
       <div className="relative w-full h-[200px] shrink-0">

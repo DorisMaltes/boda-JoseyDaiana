@@ -3,11 +3,17 @@
 import { useState } from 'react';
 
 const NAV_ITEMS = [
-  { label: 'Inicio' },
-  { label: 'Ceremonia' },
-  { label: 'Recepción' },
-  { label: 'Galería' },
-  { label: 'Confirmar asistencia' },
+  { label: 'Inicio',                   target: 'inicio'     },
+  { label: 'Nosotros',                 target: 'nosotros'   },
+  { label: 'Detalles del evento',      target: 'ceremonia'  },
+  { label: 'Itinerario',               target: 'recepcion'  },
+  { label: 'Código de vestimenta',     target: 'vestimenta' },
+  { label: 'Mesa de regalos',          target: 'regalos'    },
+  { label: 'Sugerencia de maquillaje', target: 'maquillaje' },
+  { label: 'Sugerencia de hospedaje',  target: 'hospedaje'  },
+  { label: 'Galería',                  target: 'galeria'    },
+  { label: 'Cuenta regresiva',         target: 'countdown'  },
+  { label: 'Confirmar asistencia',     target: 'rsvp'       },
 ];
 
 export default function TopNavBar() {
@@ -19,7 +25,7 @@ export default function TopNavBar() {
       <div className="fixed top-0 left-0 right-0 z-50 h-16 bg-ivory flex items-center justify-between px-6">
 
         {/* Fecha — lado izquierdo */}
-        <p className="font-principal text-[0.55rem] tracking-[0.2em] uppercase text-azul/50">
+        <p className="font-principal text-[0.55rem] tracking-[0.2em] uppercase text-azul">
           14 · Nov · 2026
         </p>
 
@@ -44,22 +50,30 @@ export default function TopNavBar() {
         </button>
 
         {/* Puebla — lado derecho */}
-        <p className="font-principal text-[0.55rem] tracking-[0.2em] uppercase text-azul/50">
+        <p className="font-principal text-[0.55rem] tracking-[0.2em] uppercase text-azul ">
           Puebla
         </p>
       </div>
 
       {/* ── Panel deslizable hacia abajo ────────────────────── */}
       <div
-        className="fixed top-16 left-0 right-0 z-50 bg-ivory px-8 pt-6 pb-8 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="fixed top-16 left-0 right-0 z-50 bg-ivory px-8 pt-4 pb-6 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{ transform: open ? 'translateY(0)' : 'translateY(-110%)' }}
       >
-        <nav className="flex flex-col gap-6">
+        <nav className="flex flex-col gap-3">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.label}
-              onClick={() => setOpen(false)}
-              className="text-left font-cursiva text-[1.8rem] leading-none text-azul/90 tracking-wide hover:text-beige transition-colors"
+              onClick={() => {
+                setOpen(false);
+                const el = document.getElementById(item.target);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              className="text-left font-principal text-xl leading-none text-azul tracking-wide hover:text-mostaza transition-colors"
             >
               {item.label}
             </button>
@@ -67,7 +81,7 @@ export default function TopNavBar() {
         </nav>
 
         <div className="mt-8 w-full h-px bg-beige/20" />
-        <p className="mt-4 text-center font-principal text-[0.55rem] tracking-[0.25em] uppercase text-azul/30">
+        <p className="mt-4 text-center font-principal text-[0.55rem] tracking-[0.25em] uppercase text-mostaza font-bold">
           José &amp; Daiana · 14 Nov 2026
         </p>
       </div>

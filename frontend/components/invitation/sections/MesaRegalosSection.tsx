@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function MesaRegalosSection() {
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
+    <section id="regalos" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
 
       {/* ── Flor6 esquina superior izquierda ───────────────── */}
       <div className="absolute top-0 left-0 pointer-events-none z-10">
@@ -11,7 +11,6 @@ export default function MesaRegalosSection() {
           alt=""
           width={160}
           height={160}
-          className="w-[160px] h-auto"
         />
       </div>
 
@@ -25,33 +24,35 @@ export default function MesaRegalosSection() {
         <Image
           src="/assets/icons/REGALOS-AZUL.png"
           alt="Regalos"
-          width={100}
-          height={100}
-          className="w-[100px] h-auto"
+          width={93}
+          height={93}
+          className=""
         />
       </div>
 
       {/* ── Texto descriptivo ──────────────────────────────── */}
-      <p className="font-principal text-base text-azul text-center leading-relaxed mb-8 px-2">
+      <p className="font-principal text-base text-azul text-center leading-relaxed mb-8 px-2 font-thin">
         Sabemos el esfuerzo que requiere una boda destino, por lo que el que nos acompañen en este
         día tan especial para nosotros es el mejor regalo que podemos recibir. Sin embargo, si desean
         hacernos un obsequio adicional ponemos a su disposición las siguientes opciones.
       </p>
 
       {/* ── N° de evento ───────────────────────────────────── */}
-      <p className="font-principal text-sm text-azul/70 text-center tracking-wide mb-4">
-        N° de evento 51562546
+      <p className="font-principal text-base text-azul text-center tracking-wide mb-4">
+        N° de evento 51937067
       </p>
 
       {/* ── Botón Liverpool ────────────────────────────────── */}
       <a
-        href="https://www.google.com"
+        href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51937067"
         target="_blank"
         rel="noopener noreferrer"
         className=" w-62.5 text-center px-16 py-2 text-[26px] text-white font-cursiva-secundario rounded-[10px] bg-verde mb-12"
       >
         Liverpool
       </a>
+
+      
 
       {/* ── Datos Bancarios ────────────────────────────────── */}
       <p className="font-principal font-bold text-base tracking-[0.12em] text-azul text-center mb-6">

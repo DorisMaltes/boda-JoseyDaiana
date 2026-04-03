@@ -27,6 +27,18 @@ export default function MobileInvitation({ guest }: Props) {
   return (
     <div className="flex flex-col w-full">
 
+      {/* ── Textura global sobre todo el contenido ──────────── */}
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('/assets/textures/esta-textura.png')",
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.05,
+          zIndex: 20,
+        }}
+      />
+
       {/* Intro — se desmonta cuando termina el video */}
       {!introFinished && (
         <IntroVideo onFinished={() => setIntroFinished(true)} />

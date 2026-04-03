@@ -4,7 +4,7 @@ import SectionSeparator from '@/components/ui/SectionSeparator';
 
 export default function NosotrosSection() {
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
+    <section id="nosotros" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
 
       {/* ── Título ─────────────────────────────────────────── */}
       <div className="relative mb-6">

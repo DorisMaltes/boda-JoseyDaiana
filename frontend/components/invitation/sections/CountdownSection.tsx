@@ -30,7 +30,7 @@ export default function CountdownSection() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ height: '520px' }}>
+    <section id="countdown" className="relative w-full overflow-hidden" style={{ height: '520px' }}>
 
       {/* ── Foto de fondo ───────────────────────────────────── */}
       <Image
@@ -48,18 +48,18 @@ export default function CountdownSection() {
       <div className="absolute inset-0 flex flex-col items-center justify-start pt-16 px-6">
 
         {/* Título */}
-        <h2 className="font-cursiva text-7xl text-white leading-none text-center mb-10 drop-shadow-md">
+        <h2 className="font-cursiva text-8xl text-white leading-none text-center mb-10 drop-shadow-md">
           Solo Falta
         </h2>
 
         {/* Contador */}
         <div className="flex items-start gap-2">
 
-          <div className="flex flex-col items-center">
-            <span className="font-principal text-5xl text-white font-bold tracking-widest leading-none">
+          <div className="flex flex-col items-center ">
+            <span className="font-principal text-4xl text-white font-bold tracking-widest leading-none">
               {pad(time.dias)}
             </span>
-            <span className="font-principal text-[10px] text-white/70 tracking-[0.2em] uppercase mt-1">
+            <span className="font-principal text-[8px] text-white tracking-[0.2em] uppercase mt-1 font-bold">
               Días
             </span>
           </div>
@@ -67,10 +67,10 @@ export default function CountdownSection() {
           <span className="font-principal text-4xl text-white/60 leading-none mt-1">:</span>
 
           <div className="flex flex-col items-center">
-            <span className="font-principal text-5xl text-white font-bold tracking-widest leading-none">
+            <span className="font-principal text-4xl text-white font-bold tracking-widest leading-none">
               {pad(time.horas)}
             </span>
-            <span className="font-principal text-[10px] text-white/70 tracking-[0.2em] uppercase mt-1">
+            <span className="font-principal text-[8px] font-bold text-white/70 tracking-[0.2em] uppercase mt-1">
               Horas
             </span>
           </div>
@@ -78,10 +78,10 @@ export default function CountdownSection() {
           <span className="font-principal text-4xl text-white/60 leading-none mt-1">:</span>
 
           <div className="flex flex-col items-center">
-            <span className="font-principal text-5xl text-white font-bold tracking-widest leading-none">
+            <span className="font-principal text-4xl text-white font-bold tracking-widest leading-none">
               {pad(time.minutos)}
             </span>
-            <span className="font-principal text-[10px] text-white/70 tracking-[0.2em] uppercase mt-1">
+            <span className="font-principal text-[8px] font-bold text-white tracking-[0.2em] uppercase mt-1">
               Minutos
             </span>
           </div>
@@ -89,10 +89,10 @@ export default function CountdownSection() {
           <span className="font-principal text-4xl text-white/60 leading-none mt-1">:</span>
 
           <div className="flex flex-col items-center">
-            <span className="font-principal text-5xl text-white font-bold tracking-widest leading-none">
+            <span className="font-principal text-4xl text-white font-bold tracking-widest leading-none">
               {pad(time.segundos)}
             </span>
-            <span className="font-principal text-[10px] text-white/70 tracking-[0.2em] uppercase mt-1">
+            <span className="font-principal text-[8px] font-bold text-white tracking-[0.2em] uppercase mt-1">
               Segundos
             </span>
           </div>

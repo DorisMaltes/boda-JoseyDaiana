@@ -171,7 +171,7 @@ export default function GaleriaSection() {
   );
 
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
+    <section id="galeria" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
 
       <h2 className="font-cursiva text-6xl leading-none text-azul text-center mb-4">
         Galería

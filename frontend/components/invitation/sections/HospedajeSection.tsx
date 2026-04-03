@@ -88,7 +88,7 @@ function HotelCard({ nombre, distancia, urlDetalles, telefono, index }: HotelCar
 /* ── Sección principal ────────────────────────────────────── */
 export default function HospedajeSection() {
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
+    <section id="hospedaje" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
 
       {/* ── Título ─────────────────────────────────────────── */}
       <h2 className="font-cursiva text-6xl leading-tight text-azul text-center mb-10">

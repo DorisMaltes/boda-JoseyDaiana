@@ -103,7 +103,7 @@ function MaquilladoraCard({ nombre, descripcion, whatsapp, instagram, index }: M
 /* ── Sección principal ────────────────────────────────────── */
 export default function MaquillajeSugerenciaSection() {
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-hidden">
+    <section id="maquillaje" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-hidden">
 
       {/* ── Flor9 esquina superior izquierda ───────────────── */}
       <div className="absolute top-20 -left-3 pointer-events-none z-10 ">

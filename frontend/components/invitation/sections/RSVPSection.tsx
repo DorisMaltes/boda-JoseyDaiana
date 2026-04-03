@@ -73,7 +73,7 @@ function CustomSelect({ placeholder, options, value, onChange }: CustomSelectPro
 /* ── Contenido según status ───────────────────────────────── */
 function StatusConfirmado({ pasesConfirmados }: { pasesConfirmados: number }) {
   return (
-    <div className="flex flex-col items-center gap-3 py-8 text-center">
+    <div className="flex flex-col items-center gap-3 py-8 text-center pb-12">
       <p className="font-cursiva text-5xl text-azul">¡Gracias por confirmar!</p>
       <p className="font-principal text-base text-azul/70 leading-relaxed">
         Tu asistencia ya fue registrada.<br />
@@ -146,7 +146,7 @@ export default function RSVPSection({ token, nombreFamilia, pasesAsignados, pase
   }
 
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 pb-0 overflow-visible">
+    <section id="rsvp" className="relative flex flex-col items-center bg-ivory px-6 pt-10 pb-0 overflow-visible">
 
       {/* ── Flor3 superior centrada ─────────────────────────── */}
       <div className="mb-6">
@@ -220,14 +220,18 @@ export default function RSVPSection({ token, nombreFamilia, pasesAsignados, pase
 
       {/* ── Regresar al inicio ──────────────────────────────── */}
       {/* ── Flor8 inferior centrada ─────────────────────────── */}
-      <div className="relative w-full">
-        <Image src="/assets/componentes/flor8.png" alt="" width={420} height={160} className="w-full h-auto" />
+      <div className="relative w-full ">
+        <div className=' flex flex-row justify-center'>
+          <Image src="/assets/componentes/flor8.png" alt="" width={224} height={100} className="" />
+          <Image src="/assets/componentes/flor8.png" alt="" width={224} height={100} className="" />
+        </div>
+        
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="absolute bottom-10 left-4 flex flex-col items-center gap-1 group"
+          className="absolute bottom-20 left-4 flex flex-col items-center gap-1 group animate-bounce"
         >
-          <div className="w-9 h-9 rounded-full border border-azul/30 flex items-center justify-center transition-colors">
+          <div className="w-9 h-9 rounded-full border border-azul flex items-center justify-center transition-colors">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-azul/50">
               <path d="M12 19V5M5 12l7-7 7 7" />
             </svg>

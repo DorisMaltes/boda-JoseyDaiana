@@ -41,23 +41,7 @@ body {
   position: relative;
 }
 
-/* ─── Textura global (5% opacidad) ─────────────────────── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url('/assets/textures/esta-textura.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 0;
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
-}
+/* Textura global — aplicada desde MobileInvitation con z-index 20 */
 
 /* ─── Animaciones de entrada ────────────────────────────── */
 @keyframes fadeUp {

@@ -62,7 +62,7 @@ function ItinerarioItem({ hora, nombre, icono, index }: ItinerarioItemProps) {
 /* ── Sección principal ────────────────────────────────────── */
 export default function ItinerarioSection() {
   return (
-    <section className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
+    <section id="recepcion" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
 
       {/* ── Título ─────────────────────────────────────────── */}
       <div className="relative mb-2 pt-6">
