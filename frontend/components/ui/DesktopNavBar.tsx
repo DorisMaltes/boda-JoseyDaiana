@@ -60,11 +60,11 @@ export default function DesktopNavBar() {
 
       {/* ── Panel deslizable ────────────────────────────────── */}
       <div
-        className="fixed top-16 left-0 right-0 z-50 bg-ivory px-16 pt-6 pb-8 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="fixed top-16 left-0 right-0 z-50 bg-ivory border-b border-beige/30 px-16 pt-6 pb-8 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-md"
         style={{ transform: open ? 'translateY(0)' : 'translateY(-110%)' }}
       >
         {/* Grid de 2 columnas para que quepan los 11 items elegantemente */}
-        <nav className="grid grid-cols-2 gap-x-20 gap-y-3 max-w-3xl">
+        <nav className="grid grid-cols-2 gap-x-20 gap-y-3 max-w-3xl mx-auto">
           {NAV_ITEMS.map((item, i) => (
             <button
               key={item.label}
@@ -81,8 +81,8 @@ export default function DesktopNavBar() {
           ))}
         </nav>
 
-        <div className="mt-6 w-full h-px bg-beige/20 max-w-3xl" />
-        <p className="mt-3 font-principal text-[0.55rem] tracking-[0.25em] uppercase text-mostaza font-bold">
+        <div className="mt-6 w-full h-px bg-beige/20 max-w-3xl mx-auto" />
+        <p className="mt-3 font-principal text-[0.55rem] tracking-[0.25em] uppercase text-mostaza font-bold text-center">
           José &amp; Daiana · 14 Nov 2026
         </p>
       </div>

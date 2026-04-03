@@ -9,18 +9,18 @@ export default function HeroSectionDesktop({ nombreFamilia, pasesAsignados }: Pr
   return (
     <section id="inicio" className="relative flex min-h-screen bg-ivory overflow-hidden">
 
-      {/* ── Panel izquierdo — texto ──────────────────────────── */}
-      <div className="relative flex flex-col items-center justify-center w-1/2 px-16 py-20 z-10">
+      {/* ── Panel centrado — texto ───────────────────────────── */}
+      <div className="relative flex flex-col items-center justify-center w-full px-16 py-20 z-10">
 
         {/* Flor1 — esquina superior izquierda */}
         <div className="animate-fade-in delay-200 absolute -top-4 -left-6 rotate-90 pointer-events-none"
-          style={{ width: '14rem', height: '12.5rem' }}>
+          style={{ width: '17rem', height: '15rem' }}>
           <Image src="/assets/componentes/flor1.png" alt="" fill className="object-contain object-top-left" priority />
         </div>
 
-        {/* Flor2 — esquina superior derecha del panel */}
-        <div className="animate-fade-in delay-200 absolute top-0 right-0 pointer-events-none"
-          style={{ width: '11rem', height: '10rem' }}>
+        {/* Flor2 — esquina superior derecha */}
+        <div className="animate-fade-in delay-200 absolute -top-4 -right-6 pointer-events-none"
+          style={{ width: '15rem', height: '13rem' }}>
           <Image src="/assets/componentes/flor2.png" alt="" fill className="object-contain object-right-top" priority />
         </div>
 
@@ -70,22 +70,17 @@ export default function HeroSectionDesktop({ nombreFamilia, pasesAsignados }: Pr
           {pasesAsignados > 1 ? `Fam. ${nombreFamilia}` : nombreFamilia}
         </p>
 
-        {/* Flor1 — esquina inferior derecha del panel */}
-        <div className="animate-fade-in delay-200 absolute -bottom-4 -right-6 rotate-[270deg] pointer-events-none"
-          style={{ width: '12rem', height: '10.5rem' }}>
+        {/* Flor1 — esquina inferior izquierda */}
+        <div className="animate-fade-in delay-200 absolute -bottom-4 -left-6 rotate-[180deg] pointer-events-none"
+          style={{ width: '15rem', height: '13rem' }}>
           <Image src="/assets/componentes/flor1.png" alt="" fill className="object-contain" />
         </div>
-      </div>
 
-      {/* ── Panel derecho — foto ─────────────────────────────── */}
-      <div className="animate-fade-in delay-800 relative w-1/2">
-        <Image
-          src="/assets/photos/fotoHeroSection.png"
-          alt="José y Daiana"
-          fill
-          className="object-cover object-top"
-          priority
-        />
+        {/* Flor2 — esquina inferior derecha */}
+        <div className="animate-fade-in delay-200 absolute -bottom-4 -right-6 rotate-[180deg] pointer-events-none"
+          style={{ width: '13rem', height: '11rem' }}>
+          <Image src="/assets/componentes/flor2.png" alt="" fill className="object-contain" />
+        </div>
       </div>
 
     </section>
