@@ -32,14 +32,17 @@ function pickRandom10() {
   return copy.slice(0, 10);
 }
 
+const BACK_ROTATIONS = [-2.5, 1.8];
+
 function CardStack({ photos }: { photos: string[] }) {
-  const [current, setCurrent]     = useState(0);
-  const [dragX, setDragX]         = useState(0);
+  const [current, setCurrent]       = useState(0);
+  const [dragX, setDragX]           = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [dismissed, setDismissed] = useState<'left' | 'right' | null>(null);
+  const [dismissed, setDismissed]   = useState<'left' | 'right' | null>(null);
   const startX = useRef<number | null>(null);
   const total  = photos.length;
   const visibleCount = 3;
+  const CARD_WIDTH = 400;
 
   function onPointerDown(e: React.PointerEvent) {
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
@@ -60,21 +63,23 @@ function CardStack({ photos }: { photos: string[] }) {
   }
 
   return (
-    <div className="relative w-full" style={{ height: '480px' }}>
+    <div className="relative w-full" style={{ minHeight: '660px' }}>
       {Array.from({ length: visibleCount }).map((_, stackPos) => {
         const photoIndex = (current + (visibleCount - 1 - stackPos)) % total;
-        const isTop   = stackPos === visibleCount - 1;
-        const scale   = isTop ? 1 : 1 - (visibleCount - 1 - stackPos) * 0.04;
-        const offsetY = isTop ? 0 : (visibleCount - 1 - stackPos) * -10;
-        const rotate  = isTop ? dragX / 20 : 0;
+        const isTop  = stackPos === visibleCount - 1;
+        const scale  = isTop ? 1 : 1 - (visibleCount - 1 - stackPos) * 0.03;
+        const offsetY = isTop ? 0 : (visibleCount - 1 - stackPos) * 10;
+        const rotate  = isTop ? dragX / 20 : BACK_ROTATIONS[stackPos] ?? 0;
         const tx      = isTop ? (dismissed === 'left' ? -500 : dismissed === 'right' ? 500 : dragX) : 0;
-        const opacity = isTop ? (dismissed ? 0 : 1) : 1 - (visibleCount - 1 - stackPos) * 0.1;
+        const opacity = isTop ? (dismissed ? 0 : 1) : 1 - (visibleCount - 1 - stackPos) * 0.08;
         return (
           <div key={photos[photoIndex]}
-            className="absolute inset-x-0 mx-auto bg-white shadow-[4px_4px_16px_rgba(0,0,0,0.15)]"
+            className="absolute bg-white shadow-[4px_4px_16px_rgba(0,0,0,0.15)]"
             style={{
-              width: '100%', height: '460px',
-              transform: `translateX(${tx}px) translateY(${offsetY}px) scale(${scale}) rotate(${rotate}deg)`,
+              width: `${CARD_WIDTH}px`,
+              left: '50%',
+              top: 0,
+              transform: `translateX(calc(-50% + ${tx}px)) translateY(${offsetY}px) scale(${scale}) rotate(${rotate}deg)`,
               transition: isDragging && isTop ? 'none' : 'transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease',
               opacity, zIndex: stackPos + 1, transformOrigin: 'center bottom', touchAction: 'none',
             }}
@@ -83,13 +88,14 @@ function CardStack({ photos }: { photos: string[] }) {
             onPointerUp={isTop ? onPointerUp : undefined}
             onPointerCancel={isTop ? onPointerUp : undefined}
           >
-            <div className="relative w-full h-full p-2">
-              <Image src={photos[photoIndex]} alt="Foto" fill className="object-cover object-center p-2" draggable={false} />
+            <div className="p-2">
+              <Image src={photos[photoIndex]} alt="Foto" width={0} height={0} sizes="400px"
+                style={{ width: '100%', height: 'auto', display: 'block' }} draggable={false} />
             </div>
           </div>
         );
       })}
-      <p className="absolute bottom-0 left-1/2 -translate-x-1/2 font-principal text-xs text-azul/40 tracking-wide">
+      <p className="absolute left-1/2 -translate-x-1/2 font-principal text-xs text-azul/40 tracking-wide" style={{ bottom: '-24px' }}>
         {(current % total) + 1} / {total}
       </p>
     </div>

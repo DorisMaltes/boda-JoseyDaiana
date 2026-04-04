@@ -67,14 +67,16 @@ function pickRandom10(): string[] {
 }
 
 /* ── Card Stack ───────────────────────────────────────────── */
-function CardStack({ photos }: { photos: string[] }) {
-  const [current, setCurrent] = useState(0);
-  const [dragX, setDragX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dismissed, setDismissed] = useState<'left' | 'right' | null>(null);
-  const startX = useRef<number | null>(null);
+/* Rotaciones fijas para las cartas de atrás — efecto pila real */
+const BACK_ROTATIONS = [-2.5, 1.8];
 
-  const total = photos.length;
+function CardStack({ photos }: { photos: string[] }) {
+  const [current, setCurrent]       = useState(0);
+  const [dragX, setDragX]           = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dismissed, setDismissed]   = useState<'left' | 'right' | null>(null);
+  const startX = useRef<number | null>(null);
+  const total  = photos.length;
 
   function onPointerDown(e: React.PointerEvent) {
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
@@ -82,56 +84,47 @@ function CardStack({ photos }: { photos: string[] }) {
     setIsDragging(true);
     setDismissed(null);
   }
-
   function onPointerMove(e: React.PointerEvent) {
     if (!isDragging || startX.current === null) return;
     setDragX(e.clientX - startX.current);
   }
-
   function onPointerUp() {
     if (!isDragging) return;
     setIsDragging(false);
     if (Math.abs(dragX) > 80) {
       setDismissed(dragX > 0 ? 'right' : 'left');
-      setTimeout(() => {
-        setCurrent((p) => (p + 1) % total); // loop al llegar al final
-        setDragX(0);
-        setDismissed(null);
-      }, 300);
-    } else {
-      setDragX(0);
-    }
+      setTimeout(() => { setCurrent((p) => (p + 1) % total); setDragX(0); setDismissed(null); }, 300);
+    } else { setDragX(0); }
     startX.current = null;
   }
 
   const visibleCount = 3;
+  /* Ancho fijo; la altura se adapta al aspecto natural de cada foto */
+  const CARD_WIDTH = 280;
 
   return (
-    <div className="relative w-full" style={{ height: '420px' }}>
+    /* min-height cubre fotos verticales (aprox 3:2 invertido → 280×420) + offset de cartas traseras */
+    <div className="relative w-full" style={{ minHeight: '500px' }}>
       {Array.from({ length: visibleCount }).map((_, stackPos) => {
         const photoIndex = (current + (visibleCount - 1 - stackPos)) % total;
-        const isTop = stackPos === visibleCount - 1;
-
-        const scale   = isTop ? 1 : 1 - (visibleCount - 1 - stackPos) * 0.04;
-        const offsetY = isTop ? 0 : (visibleCount - 1 - stackPos) * -10;
-        const rotate  = isTop ? dragX / 18 : 0;
-        const tx      = isTop
-          ? dismissed === 'left'  ? -400
-          : dismissed === 'right' ? 400
-          : dragX
-          : 0;
-        const opacity = isTop
-          ? dismissed ? 0 : 1
-          : 1 - (visibleCount - 1 - stackPos) * 0.1;
+        const isTop  = stackPos === visibleCount - 1;
+        const scale  = isTop ? 1 : 1 - (visibleCount - 1 - stackPos) * 0.03;
+        /* Cartas de atrás se desplazan ligeramente hacia abajo */
+        const offsetY = isTop ? 0 : (visibleCount - 1 - stackPos) * 10;
+        /* Rotación: cartas traseras tienen ángulo fijo; carta frontal sigue el arrastre */
+        const rotate  = isTop ? dragX / 18 : BACK_ROTATIONS[stackPos] ?? 0;
+        const tx      = isTop ? (dismissed === 'left' ? -400 : dismissed === 'right' ? 400 : dragX) : 0;
+        const opacity = isTop ? (dismissed ? 0 : 1) : 1 - (visibleCount - 1 - stackPos) * 0.08;
 
         return (
           <div
             key={photos[photoIndex]}
-            className="absolute inset-x-0 mx-auto bg-white shadow-[4px_4px_16px_rgba(0,0,0,0.15)]"
+            className="absolute bg-white shadow-[4px_4px_16px_rgba(0,0,0,0.15)]"
             style={{
-              width: '100%',
-              height: '400px',
-              transform: `translateX(${tx}px) translateY(${offsetY}px) scale(${scale}) rotate(${rotate}deg)`,
+              width: `${CARD_WIDTH}px`,
+              left: '50%',
+              top: 0,
+              transform: `translateX(calc(-50% + ${tx}px)) translateY(${offsetY}px) scale(${scale}) rotate(${rotate}deg)`,
               transition: isDragging && isTop ? 'none' : 'transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease',
               opacity,
               zIndex: stackPos + 1,
@@ -143,12 +136,15 @@ function CardStack({ photos }: { photos: string[] }) {
             onPointerUp={isTop ? onPointerUp : undefined}
             onPointerCancel={isTop ? onPointerUp : undefined}
           >
-            <div className="relative w-full h-full p-2">
+            {/* p-2 = borde blanco tipo foto impresa */}
+            <div className="p-2">
               <Image
                 src={photos[photoIndex]}
                 alt="Foto"
-                fill
-                className="object-cover object-center p-2"
+                width={0}
+                height={0}
+                sizes="280px"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
                 draggable={false}
               />
             </div>
@@ -156,7 +152,7 @@ function CardStack({ photos }: { photos: string[] }) {
         );
       })}
 
-      <p className="absolute bottom-0 left-1/2 -translate-x-1/2 font-principal text-xs text-azul/40 tracking-wide">
+      <p className="absolute bottom-0 left-1/2 -translate-x-1/2 font-principal text-xs text-azul/40 tracking-wide" style={{ bottom: '-24px' }}>
         {(current % total) + 1} / {total}
       </p>
     </div>
