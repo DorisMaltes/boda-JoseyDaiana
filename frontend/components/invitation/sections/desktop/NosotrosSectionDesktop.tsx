@@ -41,18 +41,24 @@ export default function NosotrosSectionDesktop() {
               alt=""
               width={54}
               height={54}
-              className="absolute right-[-28px] translate-x-1/2 -translate-y-1/4"
+              className="absolute -right-10 translate-x-1/2 -translate-y-1/2 "
             />
           </div>
 
+          <div className='flex flex-col  items-center '>
+              <p className="font-principal text-2xl tracking-wide text-azul leading-snug">
+              José Antonio Maltes Cuevas
+              </p>
+              
+              <p className="font-principal text-2xl text-mostaza leading-none my-2">&amp;</p>
+
+              <p className="font-principal text-2xl tracking-wide text-azul leading-snug mb-8">
+                Yelantzi Daiana Mendoza López
+              </p>
+          </div>
+
           {/* Nombres */}
-          <p className="font-principal text-2xl tracking-wide text-azul leading-snug">
-            José Antonio Maltes Cuevas
-          </p>
-          <p className="font-principal text-2xl text-mostaza leading-none my-2">&amp;</p>
-          <p className="font-principal text-2xl tracking-wide text-azul leading-snug mb-8">
-            Yelantzi Daiana Mendoza López
-          </p>
+         
 
           {/* Divider */}
           <div className="w-16 h-px bg-azul/20 mb-8" />
@@ -66,13 +72,13 @@ export default function NosotrosSectionDesktop() {
           <div className="flex flex-col gap-6">
             <div>
               <p className="font-principal text-lg text-azul tracking-wide">Laura Mendoza López</p>
-              <p className="font-principal text-sm tracking-[0.15em] uppercase text-azul/60 mt-0.5">Madre de la Novia</p>
+              <p className="font-principal text-sm tracking-[0.15em] uppercase text-azul mt-0.5">Madre de la Novia</p>
             </div>
             <div>
               <p className="font-principal text-lg text-azul tracking-wide leading-snug">
                 José Antonio Maltes García<br />Doris Elena Cuevas Tejeda
               </p>
-              <p className="font-principal text-sm tracking-[0.15em] uppercase text-azul/60 mt-0.5">Padres del Novio</p>
+              <p className="font-principal text-sm tracking-[0.15em] uppercase text-azul mt-0.5">Padres del Novio</p>
             </div>
           </div>
         </div>
@@ -80,8 +86,8 @@ export default function NosotrosSectionDesktop() {
       </div>
 
       {/* Flor3 centrada al fondo */}
-      <div className="flex justify-center relative z-10 -mb-10 mt-16">
-        <Image src="/assets/componentes/flor3.png" alt="" width={230} height={120} className="w-[200px] h-auto" />
+      <div className="flex justify-center relative z-10 -mb-25 mt-10 ">
+        <img src="/assets/componentes/flor3.png" alt="" className='w-80 h-auto'/>
       </div>
     </section>
   );

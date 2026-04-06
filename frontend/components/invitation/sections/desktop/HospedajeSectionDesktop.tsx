@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { useInView } from '@/hooks/useInView';
 
 const HOTELES = [
-  { nombre: 'Tru by Hilton\nPuebla Angelópolis',                    distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://www.google.com', telefono: '529932426111' },
-  { nombre: 'Holiday Inn Express & Suites\nPuebla Angelópolis',     distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://www.google.com', telefono: '+522221234568' },
-  { nombre: 'Hotel Villa Florida Puebla',                           distancia: 'Entre 25 a 30 minutos del evento', urlDetalles: 'https://www.google.com', telefono: '+522221234569' },
-  { nombre: 'Camino Real\nPuebla Angelópolis',                      distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://www.google.com', telefono: '+522221234570' },
+  { nombre: 'Tru by Hilton\nPuebla Angelópolis',                    distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/TDxUSeW5xbMJoggN8', telefono: '529932426111' },
+  { nombre: 'Holiday Inn Express & Suites\nPuebla Angelópolis',     distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/LoFFr93RMtGy8tXM9', telefono: '522226058000' },
+  { nombre: 'Hotel Villa Florida Puebla',                           distancia: 'Entre 25 a 30 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/tKDpXjDSgsA2CJEV9', telefono: '522221234569' },
+  { nombre: 'Camino Real\nPuebla Angelópolis',                      distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/cSEV58RxYqh8SKKE8', telefono: '522223031800' },
 ];
 
 function HotelCard({ nombre, distancia, urlDetalles, telefono, index }: { nombre: string; distancia: string; urlDetalles: string; telefono: string; index: number }) {
@@ -56,8 +56,8 @@ export default function HospedajeSectionDesktop() {
         </div>
 
         {/* Flor7 */}
-        <div className="flex justify-center relative z-10 -mb-10 mt-12">
-          <Image src="/assets/componentes/flor7.png" alt="" width={260} height={120} className="w-[220px] h-auto" />
+        <div className="flex justify-center relative z-10 -mb-30 mt-12">
+          <img src="/assets/componentes/flor7.png" alt="" className="w-80 h-auto" />
         </div>
       </div>
     </section>

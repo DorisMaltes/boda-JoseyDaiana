@@ -21,13 +21,13 @@ const HOTELES = [
     nombre: 'Hotel Villa Florida Puebla',
     distancia: 'Entre 25 a 30 minutos del evento',
     urlDetalles: 'https://maps.app.goo.gl/tKDpXjDSgsA2CJEV9',
-    telefono: '+522221234569',
+    telefono: '522221234569',
   },
   {
     nombre: 'Camino Real\nPuebla Angelópolis',
     distancia: 'Entre 20 a 25 minutos del evento',    
-    urlDetalles: 'https://maps.app.goo.gl/tKDpXjDSgsA2CJEV9',
-    telefono: '+522222732222',
+    urlDetalles: 'https://maps.app.goo.gl/cSEV58RxYqh8SKKE8',
+    telefono: '522223031800',
   },
 ];
 

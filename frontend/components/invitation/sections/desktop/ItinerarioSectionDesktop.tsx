@@ -58,7 +58,7 @@ export default function ItinerarioSectionDesktop() {
             alt=""
             width={54}
             height={54}
-            className="absolute right-0 translate-x-full -translate-y-1/4"
+            className="absolute right-1/4 translate-y-1/2 "
           />
         </div>
 
@@ -73,12 +73,16 @@ export default function ItinerarioSectionDesktop() {
         </div>
 
         {/* Flor5 */}
-        <div className="relative h-[120px]">
           <div className="absolute bottom-0 left-0 pointer-events-none">
-            <Image src="/assets/componentes/flor5.png" alt="" width={200} height={342} className="w-[160px] h-auto" />
+            <img src="/assets/componentes/flor5.png" className="w-50 h-auto" />
           </div>
+
+          <div className="absolute bottom-0 right-0 pointer-events-none">
+            <img src="/assets/componentes/flor5.png" className="w-50 h-auto -scale-x-100" />
+          </div>
+          
         </div>
-      </div>
+      
     </section>
   );
 }

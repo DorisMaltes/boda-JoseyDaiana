@@ -71,13 +71,13 @@ export default function HeroSectionDesktop({ nombreFamilia, pasesAsignados }: Pr
         </p>
 
         {/* Flor1 — esquina inferior izquierda */}
-        <div className="animate-fade-in delay-200 absolute -bottom-4 -left-6 rotate-[180deg] pointer-events-none"
+        <div className="animate-fade-in delay-200 absolute -bottom-4 -left-6  pointer-events-none"
           style={{ width: '15rem', height: '13rem' }}>
           <Image src="/assets/componentes/flor1.png" alt="" fill className="object-contain" />
         </div>
 
         {/* Flor2 — esquina inferior derecha */}
-        <div className="animate-fade-in delay-200 absolute -bottom-4 -right-6 rotate-[180deg] pointer-events-none"
+        <div className="animate-fade-in delay-200 absolute -bottom-4 -right-6 rotate-90 pointer-events-none"
           style={{ width: '13rem', height: '11rem' }}>
           <Image src="/assets/componentes/flor2.png" alt="" fill className="object-contain" />
         </div>

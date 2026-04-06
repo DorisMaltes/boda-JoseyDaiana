@@ -72,8 +72,9 @@ export default function DetallesEventoSectionDesktop() {
 
         {/* Flor4 al fondo */}
         <div className="relative w-full mt-24">
-          <div className="absolute inset-x-0 top-0 -translate-y-1/2 flex justify-center z-10 pointer-events-none">
-            <Image src="/assets/componentes/flor4.png" alt="" width={119} height={120} className="w-[119px] h-auto rotate-270" />
+          <div className="absolute inset-x-0 top-0 -translate-y-1/4 flex justify-center z-10 pointer-events-none ">
+            <img src="/assets/componentes/flor4.png" alt="" className="w-45 h-auto rotate-270" />
+            {/*<Image src="/assets/componentes/flor4.png" alt="" width={119} height={120} className="w-29.75 h-auto rotate-270" />*/}
           </div>
         </div>
 

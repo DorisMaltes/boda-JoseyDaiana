@@ -2,11 +2,15 @@ import Image from 'next/image';
 
 export default function MesaRegalosSectionDesktop() {
   return (
-    <section id="regalos" className="relative bg-ivory py-24 px-20 overflow-visible">
+    <section id="regalos" className="relative bg-ivory py-24 px-20 overflow-hidden">
 
       {/* Flor6 */}
       <div className="absolute top-0 left-0 pointer-events-none z-10">
-        <Image src="/assets/componentes/flor6.png" alt="" width={200} height={200} />
+        <Image src="/assets/componentes/flor6.png" alt="" width={400} height={200} />
+      </div>
+
+      <div className="absolute top-0 right-0 pointer-events-none z-10 -scale-x-100">
+        <Image src="/assets/componentes/flor6.png" alt="" width={400} height={200} />
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -16,7 +20,7 @@ export default function MesaRegalosSectionDesktop() {
           <h2 className="font-cursiva text-7xl leading-tight text-azul text-center mb-6">
             Mesa de Regalos
           </h2>
-          <Image src="/assets/icons/REGALOS-AZUL.png" alt="Regalos" width={93} height={93} />
+          <Image src="/assets/icons/REGALOS-AZUL.png" alt="Regalos" width={150} height={150} />
         </div>
 
         {/* Texto descriptivo */}
@@ -75,10 +79,15 @@ export default function MesaRegalosSectionDesktop() {
 
         {/* Flor4 */}
         <div className="relative w-full mt-24">
-          <div className="absolute inset-x-0 top-0 -translate-y-1/2 flex justify-center z-10 pointer-events-none">
-            <Image src="/assets/componentes/flor4.png" alt="" width={119} height={120} className="w-[119px] h-auto rotate-270" />
+          <div className="absolute inset-x-0 top-0 -translate-y-1/4 flex justify-center  pointer-events-none">
+            <img src="/assets/componentes/flor4.png" alt="" className="w-40 h-auto rotate-270" />
           </div>
         </div>
+        
+
+
+
+        
       </div>
     </section>
   );

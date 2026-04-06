@@ -6,23 +6,36 @@ import { useInView } from '@/hooks/useInView';
 /* ── Datos de maquillistas ────────────────────────────────── */
 const MAQUILLISTAS = [
   {
-    nombre: 'Karla Rivera',
-    descripcion: 'Maquillaje y peinado profesional',
-    whatsapp: 'https://wa.me/521234567890',
-    instagram: 'https://instagram.com/karlarivera',
+    nombre: 'Nancy Canales',
+    descripcion: 'Maquillaje Profesional Pueba',
+    whatsapp: 'https://wa.me/2222622194',
+    instagram: 'https://www.instagram.com/nancycanales.makeupartist?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
   },
   {
-    nombre: 'Karla Rivera',
-    descripcion: 'Maquillaje y peinado profesional',
-    whatsapp: 'https://wa.me/521234567891',
-    instagram: 'https://instagram.com/karlarivera2',
+    nombre: 'Brenda Torres',
+    descripcion: 'Maquillaje Profesional Puebla',
+    whatsapp: 'https://wa.me/2227533232',
+    instagram: 'https://www.instagram.com/brendatorres.makeup?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
   },
   {
-    nombre: 'Karla Rivera',
-    descripcion: 'Maquillaje y peinado profesional',
-    whatsapp: 'https://wa.me/521234567892',
-    instagram: 'https://instagram.com/karlarivera3',
+    nombre: 'Elia Zentella',
+    descripcion: 'Maquillaje y Peinado Profesional',
+    whatsapp: 'https://wa.me/2223692998',
+    instagram: 'https://www.instagram.com/eliazentella.makeup?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
   },
+  {
+    nombre: 'Daniela Zurita',
+    descripcion: 'Maquillaje y Peinado Profesional',
+    whatsapp: 'https://wa.me/2223401440',
+    instagram: 'https://www.instagram.com/bydanielazurita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  },
+    {
+    nombre: 'Marisol Euan',
+    descripcion: 'Maquillaje y Peinado Profesional',
+    whatsapp: 'https://wa.me/2212670886',
+    instagram: 'https://www.instagram.com/marisoleuanmakeupartist?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  },
+  
 ];
 
 /* ── Iconos SVG inline ────────────────────────────────────── */

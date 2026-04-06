@@ -4,9 +4,37 @@ import Image from 'next/image';
 import { useInView } from '@/hooks/useInView';
 
 const MAQUILLISTAS = [
-  { nombre: 'Karla Rivera',   descripcion: 'Maquillaje y peinado profesional', whatsapp: 'https://wa.me/521234567890', instagram: 'https://instagram.com/karlarivera'  },
-  { nombre: 'Karla Rivera',   descripcion: 'Maquillaje y peinado profesional', whatsapp: 'https://wa.me/521234567891', instagram: 'https://instagram.com/karlarivera2' },
-  { nombre: 'Karla Rivera',   descripcion: 'Maquillaje y peinado profesional', whatsapp: 'https://wa.me/521234567892', instagram: 'https://instagram.com/karlarivera3' },
+  {
+    nombre: 'Nancy Canales',
+    descripcion: 'Maquillaje Profesional Pueba',
+    whatsapp: 'https://wa.me/2222622194',
+    instagram: 'https://www.instagram.com/nancycanales.makeupartist?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  },
+  {
+    nombre: 'Brenda Torres',
+    descripcion: 'Maquillaje Profesional Puebla',
+    whatsapp: 'https://wa.me/2227533232',
+    instagram: 'https://www.instagram.com/brendatorres.makeup?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  },
+  {
+    nombre: 'Elia Zentella',
+    descripcion: 'Maquillaje y Peinado Profesional',
+    whatsapp: 'https://wa.me/2223692998',
+    instagram: 'https://www.instagram.com/eliazentella.makeup?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  },
+  {
+    nombre: 'Daniela Zurita',
+    descripcion: 'Maquillaje y Peinado Profesional',
+    whatsapp: 'https://wa.me/2223401440',
+    instagram: 'https://www.instagram.com/bydanielazurita?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  },
+    {
+    nombre: 'Marisol Euan',
+    descripcion: 'Maquillaje y Peinado Profesional',
+    whatsapp: 'https://wa.me/2212670886',
+    instagram: 'https://www.instagram.com/marisoleuanmakeupartist?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+  },
+  
 ];
 
 function WhatsAppIcon() {
@@ -35,6 +63,7 @@ function MaquilladoraCard({ nombre, descripcion, whatsapp, instagram, index }: {
     >
       <p className="font-principal text-lg font-bold text-azul text-center tracking-[0.1em]">{nombre}</p>
       <p className="font-principal text-sm text-terracota text-center tracking-wide">{descripcion}</p>
+      
       <div className="flex gap-3 mt-2">
         <a href={whatsapp} target="_blank" rel="noopener noreferrer"
           className="flex items-center gap-2 px-4 py-2 text-sm text-white font-principal font-bold bg-verde rounded-full">
@@ -45,6 +74,7 @@ function MaquilladoraCard({ nombre, descripcion, whatsapp, instagram, index }: {
           <InstagramIcon /> Instagram
         </a>
       </div>
+
     </div>
   );
 }

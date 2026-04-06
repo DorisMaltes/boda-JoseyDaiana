@@ -86,7 +86,7 @@ export default function DesktopInvitation({ guest }: Props) {
       </div>
 
       <DesktopNavBar />
-      <MusicPlayer />
+      <MusicPlayer introFinished={introFinished} />
 
     </div>
   );

@@ -28,10 +28,10 @@ export default function DesktopNavBar() {
   return (
     <>
       {/* ── Barra superior fija ─────────────────────────────── */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-16 bg-ivory border-b border-beige/30 flex items-center justify-between px-10">
+      <div className="fixed top-0 left-0 right-0 z-50 h-16 bg-ivory border-b border-beige/30 flex items-center justify-between px-10 ">
 
         {/* Fecha y lugar — izquierda */}
-        <p className="font-principal text-[0.55rem] tracking-[0.25em] uppercase text-azul/60">
+        <p className="font-principal text-[0.55rem] tracking-[0.25em] uppercase text-azul">
           14 · Nov · 2026 &nbsp;·&nbsp; Puebla
         </p>
 
@@ -61,7 +61,7 @@ export default function DesktopNavBar() {
       {/* ── Panel deslizable ────────────────────────────────── */}
       <div
         className="fixed top-16 left-0 right-0 z-50 bg-ivory border-b border-beige/30 px-16 pt-6 pb-8 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-md"
-        style={{ transform: open ? 'translateY(0)' : 'translateY(-110%)' }}
+        style={{ transform: open ? 'translateY(0)' : 'translateY(-150%)' }}
       >
         {/* Grid de 2 columnas para que quepan los 11 items elegantemente */}
         <nav className="grid grid-cols-2 gap-x-20 gap-y-3 max-w-3xl mx-auto">
@@ -81,7 +81,7 @@ export default function DesktopNavBar() {
           ))}
         </nav>
 
-        <div className="mt-6 w-full h-px bg-beige/20 max-w-3xl mx-auto" />
+        <div className="mt-6 w-full h-px bg-beige/20 max-w-3xl mx-auto " />
         <p className="mt-3 font-principal text-[0.55rem] tracking-[0.25em] uppercase text-mostaza font-bold text-center">
           José &amp; Daiana · 14 Nov 2026
         </p>
