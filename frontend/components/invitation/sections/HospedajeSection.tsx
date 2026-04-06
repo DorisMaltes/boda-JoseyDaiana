@@ -8,26 +8,26 @@ const HOTELES = [
   {
     nombre: 'Tru by Hilton\nPuebla Angelópolis',
     distancia: 'Entre 20 a 25 minutos del evento',
-    urlDetalles: 'https://www.google.com',
-    telefono: '529932426111',
+    urlDetalles: 'https://maps.app.goo.gl/TDxUSeW5xbMJoggN8',
+    telefono: '52522223030302',
   },
   {
     nombre: 'Holiday Inn Express & Suites\nPuebla Angelópolis',
     distancia: 'Entre 20 a 25 minutos del evento',
-    urlDetalles: 'https://www.google.com',
-    telefono: '+522221234568',
+    urlDetalles: 'https://maps.app.goo.gl/LoFFr93RMtGy8tXM9',
+    telefono: '522226058000',
   },
   {
     nombre: 'Hotel Villa Florida Puebla',
     distancia: 'Entre 25 a 30 minutos del evento',
-    urlDetalles: 'https://www.google.com',
+    urlDetalles: 'https://maps.app.goo.gl/tKDpXjDSgsA2CJEV9',
     telefono: '+522221234569',
   },
   {
     nombre: 'Camino Real\nPuebla Angelópolis',
-    distancia: 'Entre 20 a 25 minutos del evento',
-    urlDetalles: 'https://www.google.com',
-    telefono: '+522221234570',
+    distancia: 'Entre 20 a 25 minutos del evento',    
+    urlDetalles: 'https://maps.app.goo.gl/tKDpXjDSgsA2CJEV9',
+    telefono: '+522222732222',
   },
 ];
 

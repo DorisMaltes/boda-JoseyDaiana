@@ -14,14 +14,20 @@ interface FloatingNote {
 
 let noteId = 0;
 
-export default function MusicPlayer() {
+interface Props {
+  introFinished: boolean;
+}
+
+export default function MusicPlayer({ introFinished }: Props) {
   const audioRef  = useRef<HTMLAudioElement>(null);
   const [muted,   setMuted]   = useState(false);
   const [playing, setPlaying] = useState(false);
   const [notes,   setNotes]   = useState<FloatingNote[]>([]);
 
-  /* ── Iniciar reproducción — intento autoplay, fallback en primer clic ── */
+  /* ── Iniciar reproducción solo después de que la intro termine ── */
   useEffect(() => {
+    if (!introFinished) return;
+
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -31,31 +37,28 @@ export default function MusicPlayer() {
     const tryPlay = () => {
       audio.play()
         .then(() => setPlaying(true))
-        .catch(() => {/* blocked by browser — se activa con primer toque */});
+        .catch(() => {/* bloqueado por el navegador — fallback en primer gesto */});
     };
 
     tryPlay();
 
-    /* Si el autoplay fue bloqueado, arranca en el primer gesto del usuario */
+    /* Si el autoplay sigue bloqueado, arranca en el primer gesto del usuario */
     const onFirstGesture = () => {
-      if (!playing) {
-        audio.play()
-          .then(() => setPlaying(true))
-          .catch(() => {});
-      } 
+      audio.play()
+        .then(() => setPlaying(true))
+        .catch(() => {});
       document.removeEventListener('touchstart', onFirstGesture);
       document.removeEventListener('click',      onFirstGesture);
     };
 
-    document.addEventListener('touchstart', onFirstGesture, { once: true });
-    document.addEventListener('click',      onFirstGesture, { once: true });
+    document.addEventListener('touchstart', onFirstGesture);
+    document.addEventListener('click',      onFirstGesture);
 
     return () => {
       document.removeEventListener('touchstart', onFirstGesture);
       document.removeEventListener('click',      onFirstGesture);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [introFinished]);
 
   /* ── Emitir notas musicales mientras suena ── */
   useEffect(() => {
@@ -85,17 +88,25 @@ export default function MusicPlayer() {
     if (!audio) return;
 
     if (muted) {
-      audio.muted = false;
+      /* Desmutar: restaurar volumen */
+      audio.volume = 0.4;
       setMuted(false);
+      /* Si iOS interrumpió la reproducción, reanudarla */
+      if (audio.paused) {
+        audio.play()
+          .then(() => setPlaying(true))
+          .catch(() => {});
+      }
     } else {
-      audio.muted = true;
+      /* Mutar: volumen a 0 (más fiable que audio.muted en iOS Safari) */
+      audio.volume = 0;
       setMuted(true);
     }
   }
 
   return (
     <>
-      {/* Audio oculto — reemplaza /assets/music/cancion.mp3 con la canción real */}
+      {/* Audio oculto */}
       <audio ref={audioRef} src="/assets/music/music.mp3" preload="auto" />
 
       {/* ── Botón fijo inferior izquierdo ── */}

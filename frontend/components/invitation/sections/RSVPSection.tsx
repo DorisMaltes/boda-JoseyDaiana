@@ -146,7 +146,7 @@ export default function RSVPSection({ token, nombreFamilia, pasesAsignados, pase
   }
 
   return (
-    <section id="rsvp" className="relative flex flex-col items-center bg-ivory px-6 pt-10 pb-0 overflow-visible">
+    <section id="rsvp" className="relative flex flex-col items-center bg-ivory px-6 pt-10 pb-0 overflow-hidden">
 
       {/* ── Flor3 superior centrada ─────────────────────────── */}
       <div className="mb-6">
@@ -222,8 +222,8 @@ export default function RSVPSection({ token, nombreFamilia, pasesAsignados, pase
       {/* ── Flor8 inferior centrada ─────────────────────────── */}
       <div className="relative w-full ">
         <div className=' flex flex-row justify-center'>
-          <Image src="/assets/componentes/flor8.png" alt="" width={224} height={100} className="" />
-          <Image src="/assets/componentes/flor8.png" alt="" width={224} height={100} className="" />
+          <Image src="/assets/componentes/flor8.png" alt="" width={200} height={95} className="" />
+          <Image src="/assets/componentes/flor8.png" alt="" width={200} height={95} className="" />
         </div>
         
         <button

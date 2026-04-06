@@ -90,7 +90,7 @@ export default function MobileInvitation({ guest }: Props) {
       <TopNavBar />
 
       {/* Reproductor de música fijo inferior izquierdo */}
-      <MusicPlayer />
+      <MusicPlayer introFinished={introFinished} />
 
     </div>
   );
