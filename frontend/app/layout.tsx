@@ -21,7 +21,7 @@ const parisienne = Parisienne ({
 });
 
 export const metadata: Metadata = {
-  title: 'Boda José & Daiana',
+  title: 'Boda Jose & Daiana',
   description: 'Invitación de boda — 14 de Noviembre, Puebla',
 };
 

@@ -8,7 +8,7 @@ export default function NotFound() {
           404
         </p>
         <p className="font-[family-name:var(--font-body)] text-[#8C7B68] mb-6">
-          Esta invitación no existe o el enlace es inválido.
+          Esta invitación no existe o el enlace es inválido. :) 
         </p>
         <Link
           href="/"

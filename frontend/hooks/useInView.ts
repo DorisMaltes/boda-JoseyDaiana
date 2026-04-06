@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
  * Detecta cuando un elemento entra al viewport.
  * Usa IntersectionObserver + scroll fallback para máxima compatibilidad con iOS Safari.
  */
+
 export function useInView(offset = 80) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
