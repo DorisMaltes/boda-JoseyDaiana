@@ -1,40 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 /* ── Todas las fotos disponibles ──────────────────────────── */
 const ALL_PHOTOS = [
-  'STD_DAIANA & JOSE-10.jpg',
-  'STD_DAIANA & JOSE-11.jpg',
-  'STD_DAIANA & JOSE-12.jpg',
-  'STD_DAIANA & JOSE-126.jpg',
-  'STD_DAIANA & JOSE-129.jpg',
-  'STD_DAIANA & JOSE-131.jpg',
-  'STD_DAIANA & JOSE-141.jpg',
-  'STD_DAIANA & JOSE-142.jpg',
-  'STD_DAIANA & JOSE-144.jpg',
-  'STD_DAIANA & JOSE-152.jpg',
-  'STD_DAIANA & JOSE-155.jpg',
-  'STD_DAIANA & JOSE-165.jpg',
-  'STD_DAIANA & JOSE-170.jpg',
-  'STD_DAIANA & JOSE-183.jpg',
-  'STD_DAIANA & JOSE-191.jpg',
-  'STD_DAIANA & JOSE-196.jpg',
-  'STD_DAIANA & JOSE-206.jpg',
-  'STD_DAIANA & JOSE-212.jpg',
-  'STD_DAIANA & JOSE-220.jpg',
-  'STD_DAIANA & JOSE-224.jpg',
-  'STD_DAIANA & JOSE-228.jpg',
-  'STD_DAIANA & JOSE-231.jpg',
-  'STD_DAIANA & JOSE-235.jpg',
-  'STD_DAIANA & JOSE-238.jpg',
-  'STD_DAIANA & JOSE-24.jpg',
-  'STD_DAIANA & JOSE-244.jpg',
-  'STD_DAIANA & JOSE-250.jpg',
-  'STD_DAIANA & JOSE-252.jpg',
-  'STD_DAIANA & JOSE-26.jpg',
-  'STD_DAIANA & JOSE-260.jpg',
+  'STD_DAIANA & JOSE-10.jpg','STD_DAIANA & JOSE-11.jpg','STD_DAIANA & JOSE-12.jpg',
+  'STD_DAIANA & JOSE-126.jpg','STD_DAIANA & JOSE-129.jpg','STD_DAIANA & JOSE-131.jpg','STD_DAIANA & JOSE-141.jpg',
+  'STD_DAIANA & JOSE-142.jpg','STD_DAIANA & JOSE-144.jpg','STD_DAIANA & JOSE-152.jpg','STD_DAIANA & JOSE-155.jpg','STD_DAIANA & JOSE-165.jpg',
+  'STD_DAIANA & JOSE-170.jpg','STD_DAIANA & JOSE-183.jpg','STD_DAIANA & JOSE-191.jpg','STD_DAIANA & JOSE-196.jpg','STD_DAIANA & JOSE-206.jpg',
+  'STD_DAIANA & JOSE-212.jpg','STD_DAIANA & JOSE-220.jpg','STD_DAIANA & JOSE-224.jpg','STD_DAIANA & JOSE-228.jpg','STD_DAIANA & JOSE-231.jpg',
+  'STD_DAIANA & JOSE-235.jpg','STD_DAIANA & JOSE-238.jpg','STD_DAIANA & JOSE-24.jpg','STD_DAIANA & JOSE-244.jpg','STD_DAIANA & JOSE-250.jpg',
+  'STD_DAIANA & JOSE-252.jpg','STD_DAIANA & JOSE-26.jpg','STD_DAIANA & JOSE-260.jpg',
   'STD_DAIANA & JOSE-262.jpg',
   'STD_DAIANA & JOSE-267.jpg',
   'STD_DAIANA & JOSE-269.jpg',
@@ -66,11 +43,58 @@ function pickRandom10(): string[] {
   return copy.slice(0, 10);
 }
 
+/* ── Image Modal ──────────────────────────────────────────── */
+function ImageModal({ src, onClose }: { src: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 200,
+        backgroundColor: 'rgba(0,0,0,0.88)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '16px',
+      }}
+    >
+      {/* Botón cerrar */}
+      <button
+        onClick={onClose}
+        aria-label="Cerrar"
+        style={{
+          position: 'absolute', top: '16px', right: '16px',
+          background: 'rgba(255,255,255,0.15)', border: 'none',
+          borderRadius: '50%', width: '40px', height: '40px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'pointer', color: '#fff', fontSize: '20px',
+        }}
+      >
+        ✕
+      </button>
+
+      {/* Imagen — detiene propagación para no cerrar al clicar la foto */}
+      <div onClick={(e) => e.stopPropagation()} style={{ maxWidth: '100%', maxHeight: '100%' }}>
+        <Image
+          src={src}
+          alt="Foto ampliada"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: 'auto', height: 'auto', maxWidth: '90vw', maxHeight: '90vh', display: 'block' }}
+        />
+      </div>
+    </div>
+  );
+}
+
 /* ── Card Stack ───────────────────────────────────────────── */
-/* Rotaciones fijas para las cartas de atrás — efecto pila real */
 const BACK_ROTATIONS = [-2.5, 1.8];
 
-function CardStack({ photos }: { photos: string[] }) {
+function CardStack({ photos, onImageClick }: { photos: string[]; onImageClick: (src: string) => void }) {
   const [current, setCurrent]       = useState(0);
   const [dragX, setDragX]           = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -92,26 +116,27 @@ function CardStack({ photos }: { photos: string[] }) {
     if (!isDragging) return;
     setIsDragging(false);
     if (Math.abs(dragX) > 80) {
+      /* Swipe — avanzar carta */
       setDismissed(dragX > 0 ? 'right' : 'left');
       setTimeout(() => { setCurrent((p) => (p + 1) % total); setDragX(0); setDismissed(null); }, 300);
-    } else { setDragX(0); }
+    } else {
+      /* Tap (movimiento mínimo) — abrir modal */
+      if (Math.abs(dragX) < 8) onImageClick(photos[current]);
+      setDragX(0);
+    }
     startX.current = null;
   }
 
   const visibleCount = 3;
-  /* Ancho fijo; la altura se adapta al aspecto natural de cada foto */
   const CARD_WIDTH = 280;
 
   return (
-    /* min-height cubre fotos verticales (aprox 3:2 invertido → 280×420) + offset de cartas traseras */
     <div className="relative w-full" style={{ minHeight: '500px' }}>
       {Array.from({ length: visibleCount }).map((_, stackPos) => {
         const photoIndex = (current + (visibleCount - 1 - stackPos)) % total;
         const isTop  = stackPos === visibleCount - 1;
         const scale  = isTop ? 1 : 1 - (visibleCount - 1 - stackPos) * 0.03;
-        /* Cartas de atrás se desplazan ligeramente hacia abajo */
         const offsetY = isTop ? 0 : (visibleCount - 1 - stackPos) * 10;
-        /* Rotación: cartas traseras tienen ángulo fijo; carta frontal sigue el arrastre */
         const rotate  = isTop ? dragX / 18 : BACK_ROTATIONS[stackPos] ?? 0;
         const tx      = isTop ? (dismissed === 'left' ? -400 : dismissed === 'right' ? 400 : dragX) : 0;
         const opacity = isTop ? (dismissed ? 0 : 1) : 1 - (visibleCount - 1 - stackPos) * 0.08;
@@ -124,6 +149,7 @@ function CardStack({ photos }: { photos: string[] }) {
               width: `${CARD_WIDTH}px`,
               left: '50%',
               top: 0,
+              cursor: isTop ? 'pointer' : 'default',
               transform: `translateX(calc(-50% + ${tx}px)) translateY(${offsetY}px) scale(${scale}) rotate(${rotate}deg)`,
               transition: isDragging && isTop ? 'none' : 'transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease',
               opacity,
@@ -136,7 +162,6 @@ function CardStack({ photos }: { photos: string[] }) {
             onPointerUp={isTop ? onPointerUp : undefined}
             onPointerCancel={isTop ? onPointerUp : undefined}
           >
-            {/* p-2 = borde blanco tipo foto impresa */}
             <div className="p-2">
               <Image
                 src={photos[photoIndex]}
@@ -161,10 +186,10 @@ function CardStack({ photos }: { photos: string[] }) {
 
 /* ── Sección principal ────────────────────────────────────── */
 export default function GaleriaSection() {
-  // Inicializar con fotos random directamente — solo corre en cliente
   const [photos] = useState<string[]>(() =>
     typeof window !== 'undefined' ? pickRandom10() : []
   );
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   return (
     <section id="galeria" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
@@ -185,7 +210,9 @@ export default function GaleriaSection() {
         </svg>
       </div>
 
-      {photos.length > 0 && <CardStack photos={photos} />}
+      {photos.length > 0 && (
+        <CardStack photos={photos} onImageClick={setSelectedPhoto} />
+      )}
 
       <div className="relative z-10 -mb-10 mt-8">
         <Image
@@ -196,6 +223,10 @@ export default function GaleriaSection() {
           className="pb-2"
         />
       </div>
+
+      {selectedPhoto && (
+        <ImageModal src={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
+      )}
 
     </section>
   );

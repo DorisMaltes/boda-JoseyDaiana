@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const ALL_PHOTOS = [
   'STD_DAIANA & JOSE-10.jpg','STD_DAIANA & JOSE-11.jpg','STD_DAIANA & JOSE-12.jpg',
@@ -32,9 +32,58 @@ function pickRandom10() {
   return copy.slice(0, 10);
 }
 
+/* ── Image Modal ──────────────────────────────────────────── */
+function ImageModal({ src, onClose }: { src: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 200,
+        backgroundColor: 'rgba(0,0,0,0.88)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '24px',
+      }}
+    >
+      {/* Botón cerrar */}
+      <button
+        onClick={onClose}
+        aria-label="Cerrar"
+        style={{
+          position: 'absolute', top: '20px', right: '20px',
+          background: 'rgba(255,255,255,0.15)', border: 'none',
+          borderRadius: '50%', width: '44px', height: '44px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          cursor: 'pointer', color: '#fff', fontSize: '20px',
+        }}
+      >
+        ✕
+      </button>
+
+      {/* Imagen — detiene propagación para no cerrar al clicar la foto */}
+      <div onClick={(e) => e.stopPropagation()} style={{ maxWidth: '100%', maxHeight: '100%' }}>
+        <Image
+          src={src}
+          alt="Foto ampliada"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: 'auto', height: 'auto', maxWidth: '85vw', maxHeight: '85vh', display: 'block' }}
+        />
+      </div>
+    </div>
+  );
+}
+
+/* ── Card Stack ───────────────────────────────────────────── */
 const BACK_ROTATIONS = [-2.5, 1.8];
 
-function CardStack({ photos }: { photos: string[] }) {
+function CardStack({ photos, onImageClick }: { photos: string[]; onImageClick: (src: string) => void }) {
   const [current, setCurrent]       = useState(0);
   const [dragX, setDragX]           = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -56,9 +105,14 @@ function CardStack({ photos }: { photos: string[] }) {
     if (!isDragging) return;
     setIsDragging(false);
     if (Math.abs(dragX) > 80) {
+      /* Swipe — avanzar carta */
       setDismissed(dragX > 0 ? 'right' : 'left');
       setTimeout(() => { setCurrent((p) => (p + 1) % total); setDragX(0); setDismissed(null); }, 300);
-    } else { setDragX(0); }
+    } else {
+      /* Tap (movimiento mínimo) — abrir modal */
+      if (Math.abs(dragX) < 8) onImageClick(photos[current]);
+      setDragX(0);
+    }
     startX.current = null;
   }
 
@@ -77,8 +131,8 @@ function CardStack({ photos }: { photos: string[] }) {
             className="absolute bg-white shadow-[4px_4px_16px_rgba(0,0,0,0.15)]"
             style={{
               width: `${CARD_WIDTH}px`,
-              left: '50%',
-              top: 0,
+              left: '50%', top: 0,
+              cursor: isTop ? 'pointer' : 'default',
               transform: `translateX(calc(-50% + ${tx}px)) translateY(${offsetY}px) scale(${scale}) rotate(${rotate}deg)`,
               transition: isDragging && isTop ? 'none' : 'transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease',
               opacity, zIndex: stackPos + 1, transformOrigin: 'center bottom', touchAction: 'none',
@@ -106,6 +160,7 @@ export default function GaleriaSectionDesktop() {
   const [photos] = useState<string[]>(() =>
     typeof window !== 'undefined' ? pickRandom10() : []
   );
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   return (
     <section id="galeria" className="relative bg-ivory py-24 px-20 overflow-visible">
@@ -123,12 +178,19 @@ export default function GaleriaSectionDesktop() {
           </svg>
         </div>
 
-        {photos.length > 0 && <CardStack photos={photos} />}
+        {photos.length > 0 && (
+          <CardStack photos={photos} onImageClick={setSelectedPhoto} />
+        )}
 
         <div className="flex justify-center relative z-10 -mb-10 mt-10">
           <Image src="/assets/componentes/flor11.png" alt="" width={360} height={131} className="w-[320px] h-auto pb-2" />
         </div>
       </div>
+
+      {selectedPhoto && (
+        <ImageModal src={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
+      )}
+
     </section>
   );
 }
