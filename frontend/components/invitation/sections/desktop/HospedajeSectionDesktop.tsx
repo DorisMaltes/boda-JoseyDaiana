@@ -44,9 +44,14 @@ export default function HospedajeSectionDesktop() {
     <section id="hospedaje" className="relative bg-ivory py-24 px-20 overflow-visible">
       <div className="max-w-5xl mx-auto">
 
-        <h2 className="font-cursiva text-7xl leading-tight text-azul text-center mb-16">
+        <h2 className="font-cursiva text-7xl leading-tight text-azul text-center mb-4">
           Sugerencia de<br />Hospedaje
         </h2>
+
+        {/* ── Disclaimer ─────────────────────────────────────── */}
+        <p className="font-principal text-sm text-azul/60 text-center tracking-wide leading-relaxed max-w-xl mx-auto mb-14 italic">
+          Debido a un evento importante en la ciudad durante nuestras fechas, la disponibilidad de hospedaje será limitada. Les recomendamos reservar con anticipación.
+        </p>
 
         {/* 2x2 grid */}
         <div className="grid grid-cols-2 gap-6">

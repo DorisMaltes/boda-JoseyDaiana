@@ -91,9 +91,14 @@ export default function HospedajeSection() {
     <section id="hospedaje" className="relative flex flex-col items-center bg-ivory px-6 pt-10 overflow-visible">
 
       {/* ── Título ─────────────────────────────────────────── */}
-      <h2 className="font-cursiva text-6xl leading-tight text-azul text-center mb-10">
+      <h2 className="font-cursiva text-6xl leading-tight text-azul text-center mb-4">
         Sugerencia de<br />Hospedaje
       </h2>
+
+      {/* ── Disclaimer ─────────────────────────────────────── */}
+      <p className="font-principal text-xs text-azul/60 text-center tracking-wide leading-relaxed max-w-sm mb-10 italic">
+        Debido a un evento importante en la ciudad durante nuestras fechas, la disponibilidad de hospedaje será limitada. Les recomendamos reservar con anticipación.
+      </p>
 
       {/* ── Tarjetas ───────────────────────────────────────── */}
       <div className="flex flex-col gap-6 w-full">
