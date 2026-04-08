@@ -18,11 +18,14 @@ export default function IntroVideo({ onFinished }: Props) {
     if (!video) return;
 
     setStatus('playing');
+    video.playbackRate = 1.25;
     video.play();
+    document.body.style.overflow = 'hidden';
   }, [status]);
 
   const handleEnded = useCallback(() => {
     setStatus('done');
+    document.body.style.overflow = '';
     // Pequeño delay para que el fade-out se complete antes de mostrar la invitación
     setTimeout(onFinished, 600);
   }, [onFinished]);
