@@ -46,7 +46,7 @@ export default function IntroVideo({ onFinished }: Props) {
       {/* Video */}
       <video
         ref={videoRef}
-        src="/assets/video/envelopeVideo.mp4"
+        src="/assets/video/envelopeVideo.mov"
         playsInline
         muted={false}
         preload="auto"
