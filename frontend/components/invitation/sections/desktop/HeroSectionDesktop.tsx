@@ -1,11 +1,16 @@
+
 import Image from 'next/image';
+
 
 interface Props {
   nombreFamilia: string;
   pasesAsignados: number;
+  esFamilia?: boolean;
+  ApellidosFamilia?: string;
+
 }
 
-export default function HeroSectionDesktop({ nombreFamilia, pasesAsignados }: Props) {
+export default function HeroSectionDesktop({ nombreFamilia, pasesAsignados ,esFamilia, ApellidosFamilia }: Props) {
   return (
     <section id="inicio" className="relative flex min-h-screen bg-ivory overflow-hidden">
 
@@ -65,9 +70,6 @@ export default function HeroSectionDesktop({ nombreFamilia, pasesAsignados }: Pr
         {/* Bienvenida */}
         <p className="animate-fade-up delay-800 font-principal text-sm tracking-[0.18em] uppercase text-azul/60 text-center">
           Bienvenido
-        </p>
-        <p className="animate-fade-up delay-800 font-cursiva text-3xl text-azul text-center mt-1">
-          {pasesAsignados > 1 ? `Fam. ${nombreFamilia}` : nombreFamilia}
         </p>
 
         {/* Flor1 — esquina inferior izquierda */}
