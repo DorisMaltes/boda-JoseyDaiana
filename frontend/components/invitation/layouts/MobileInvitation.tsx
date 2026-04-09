@@ -79,6 +79,8 @@ export default function MobileInvitation({ guest }: Props) {
         <RSVPSection
           token={guest.token}
           nombreFamilia={guest.nombreFamilia}
+          ApellidosFamilia={guest.ApellidosFamilia}
+          esFamilia={guest.esFamilia}
           pasesAsignados={guest.pasesAsignados}
           pasesConfirmados={guest.pasesConfirmados}
           mensajeParanovios={guest.mensajeParanovios}

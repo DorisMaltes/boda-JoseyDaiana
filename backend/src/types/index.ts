@@ -4,6 +4,8 @@ export interface Guest {
   id: number;
   token: string;
   nombreFamilia: string;
+  ApellidosFamilia?: string;
+  esFamilia?: boolean;
   pasesAsignados: number;
   pasesConfirmados: number;
   statusRSVP: RsvpStatus;

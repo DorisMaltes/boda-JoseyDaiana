@@ -78,6 +78,8 @@ export default function DesktopInvitation({ guest }: Props) {
         <RSVPSectionDesktop
           token={guest.token}
           nombreFamilia={guest.nombreFamilia}
+          ApellidosFamilia={guest.ApellidosFamilia}
+          esFamilia={guest.esFamilia}
           pasesAsignados={guest.pasesAsignados}
           pasesConfirmados={guest.pasesConfirmados}
           statusRSVP={guest.statusRSVP}

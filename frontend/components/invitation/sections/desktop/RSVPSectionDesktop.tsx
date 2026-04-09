@@ -8,6 +8,8 @@ import type { RsvpStatus } from '@/types';
 interface Props {
   token: string;
   nombreFamilia: string;
+  ApellidosFamilia?: string;
+  esFamilia?: boolean;
   pasesAsignados: number;
   pasesConfirmados: number;
   statusRSVP: RsvpStatus;
@@ -81,7 +83,7 @@ function StatusDeclinado() {
   );
 }
 
-export default function RSVPSectionDesktop({ token, nombreFamilia, pasesAsignados, pasesConfirmados: initialPases, statusRSVP: initialStatus }: Props) {
+export default function RSVPSectionDesktop({ token, nombreFamilia, ApellidosFamilia, esFamilia, pasesAsignados, pasesConfirmados: initialPases, statusRSVP: initialStatus }: Props) {
   const [status, setStatus]           = useState<RsvpStatus>(initialStatus);
   const [pases, setPases]             = useState(initialPases);
   const [asistencia, setAsistencia]   = useState('');
@@ -122,7 +124,7 @@ export default function RSVPSectionDesktop({ token, nombreFamilia, pasesAsignado
             Pase reservado para:
           </p>
           <h2 className="font-cursiva text-6xl text-azul text-center leading-tight mb-3">
-            {pasesAsignados > 1 ? `Fam. ${nombreFamilia}` : nombreFamilia}
+            {esFamilia ? `Fam. ${ApellidosFamilia}` : nombreFamilia}
           </h2>
           <p className="font-principal text-base text-azul/70 text-center tracking-[0.08em]">
             ({pasesAsignados} {pasesAsignados === 1 ? 'persona' : 'personas'})
