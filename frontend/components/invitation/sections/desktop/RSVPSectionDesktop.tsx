@@ -124,7 +124,7 @@ export default function RSVPSectionDesktop({ token, nombreFamilia, ApellidosFami
             Pase reservado para:
           </p>
           <h2 className="font-cursiva text-6xl text-azul text-center leading-tight mb-3">
-            {esFamilia ? `Fam. ${ApellidosFamilia}` : nombreFamilia}
+            {esFamilia ? `Familia ${ApellidosFamilia}` : nombreFamilia}
           </h2>
           <p className="font-principal text-base text-azul/70 text-center tracking-[0.08em]">
             ({pasesAsignados} {pasesAsignados === 1 ? 'persona' : 'personas'})
