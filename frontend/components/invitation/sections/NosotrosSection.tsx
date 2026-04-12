@@ -55,7 +55,7 @@ export default function NosotrosSection() {
         }}
       >
         <Image
-          src="/assets/photos/fotoNosotrosSection.jpg"
+          src="/assets/photos/fotoNosotrosSection_opt.jpg"
           alt="José y Daiana"
           width={238}
           height={332}

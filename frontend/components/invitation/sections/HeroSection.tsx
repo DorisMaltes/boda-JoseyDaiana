@@ -90,7 +90,7 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
       {/* ── Foto de los novios ─────────────────────────────── */}
       <div className="animate-fade-in delay-800 relative w-full flex-1 min-h-[320px]">
         <Image
-          src="/assets/photos/fotoHeroSection.png"
+          src="/assets/photos/fotoHeroSection.jpg"
           alt="José y Daiana"
           fill
           className="object-cover object-top"

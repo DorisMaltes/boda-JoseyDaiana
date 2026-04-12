@@ -16,7 +16,7 @@ export default function NosotrosSectionDesktop() {
           {/* Foto oval */}
           <div className="overflow-hidden shrink-0" style={{ width: '300px', height: '420px', borderRadius: '50%' }}>
             <Image
-              src="/assets/photos/fotoNosotrosSection.jpg"
+              src="/assets/photos/fotoNosotrosSection_opt.jpg"
               alt="José y Daiana"
               width={300}
               height={420}

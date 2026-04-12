@@ -30,7 +30,7 @@ export default function CountdownSectionDesktop() {
     <section id="countdown" className="relative w-full overflow-hidden" style={{ height: '650px' }}>
 
       <Image
-        src="/assets/photos/fotoCountdown.jpg"
+        src="/assets/photos/fotoCountdown_opt.jpg"
         alt="José y Daiana"
         fill
         className="object-cover object-center"

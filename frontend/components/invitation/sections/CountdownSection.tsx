@@ -34,11 +34,10 @@ export default function CountdownSection() {
 
       {/* ── Foto de fondo ───────────────────────────────────── */}
       <Image
-        src="/assets/photos/fotoCountdown.jpg"
+        src="/assets/photos/fotoCountdown_opt.jpg"
         alt="José y Daiana"
         fill
         className="object-cover object-center "
-        priority
       />
 
       {/* ── Overlay oscuro ──────────────────────────────────── */}
