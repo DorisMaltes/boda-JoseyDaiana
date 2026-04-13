@@ -16,7 +16,7 @@ const NAV_ITEMS = [
   { label: 'Confirmar asistencia',     target: 'rsvp'       },
 ];
 
-function scrollTo(target: string) {
+function scrollToSection(target: string) {
   const el = document.getElementById(target);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   else window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -37,7 +37,7 @@ export default function DesktopNavBar() {
 
         {/* Nombres — centro */}
         <button
-          onClick={() => scrollTo('inicio')}
+          onClick={() => scrollToSection('inicio')}
           className="font-cursiva text-2xl text-azul leading-none hover:text-mostaza transition-colors"
         >
           José &amp; Daiana
@@ -61,14 +61,14 @@ export default function DesktopNavBar() {
       {/* ── Panel deslizable ────────────────────────────────── */}
       <div
         className="fixed top-16 left-0 right-0 z-50 bg-ivory border-b border-beige/30 px-16 pt-6 pb-8 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-md"
-        style={{ transform: open ? 'translateY(0)' : 'translateY(-150%)' }}
+        style={{ transform: open ? 'translateY(0)' : 'translateY(-150%)', pointerEvents: open ? 'auto' : 'none' }}
       >
         {/* Grid de 2 columnas para que quepan los 11 items elegantemente */}
         <nav className="grid grid-cols-2 gap-x-20 gap-y-3 max-w-3xl mx-auto">
           {NAV_ITEMS.map((item, i) => (
             <button
               key={item.label}
-              onClick={() => { setOpen(false); scrollTo(item.target); }}
+              onClick={() => { setOpen(false); scrollToSection(item.target); }}
               className="text-left font-principal text-xl leading-none text-azul tracking-wide hover:text-mostaza transition-colors"
               style={{
                 opacity:    open ? 1 : 0,
