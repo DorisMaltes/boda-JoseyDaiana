@@ -5,10 +5,10 @@ import { useInView } from '@/hooks/useInView';
 
 /* ── Datos de hospedaje ───────────────────────────────────── */
 const HOTELES = [
-  { nombre: 'Tru by Hilton\nPuebla Angelópolis',                    distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/TDxUSeW5xbMJoggN8', telefono: '2223030302' },
-  { nombre: 'Holiday Inn Express & Suites\nPuebla Angelópolis',     distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/LoFFr93RMtGy8tXM9', telefono: '2226058000' },
-  { nombre: 'Hotel Villa Florida Puebla',                           distancia: 'Entre 25 a 30 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/tKDpXjDSgsA2CJEV9', telefono: '2221234569' },
-  { nombre: 'Camino Real\nPuebla Angelópolis',                      distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/cSEV58RxYqh8SKKE8', telefono: '2223031800' },
+  { nombre: 'MM Grand Hotel Puebla, Tapestry Collection by Hilton', distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/4Uwgz3LFNF9446Uw7', telefono: '2227949999' },
+  { nombre: 'Fiesta Inn Puebla Las Ánimas',     distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/9zCGdmp1jwVCDUu29', telefono: '2226058000' },
+  { nombre: 'Holiday Inn Puebla la Noria',     distancia: 'Entre 20 a 35 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/VN3sevfgpTJXCanb6', telefono: '2222119000' },
+  
 ];
 
 /* ── Tarjeta reutilizable ─────────────────────────────────── */
