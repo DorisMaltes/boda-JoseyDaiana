@@ -102,6 +102,7 @@ export default function HospedajeSection() {
             urlDetalles={hotel.urlDetalles}
             telefono={hotel.telefono}
             index={i}
+            urlWhatsapp={hotel.urlWhatsapp}
           />
         ))}
       </div>
