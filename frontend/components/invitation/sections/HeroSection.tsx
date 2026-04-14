@@ -10,7 +10,7 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
     <section id="inicio" className="relative flex flex-col overflow-hidden min-h-svh bg-ivory">
 
       {/* ── Flores (solo esquinas, sin altura fija) ─────────── */}
-      <div className="relative w-full h-[200px] shrink-0">
+      <div className="relative w-full h-50 shrink-0">
 
         {/* Flor izquierda */}
         <div
@@ -35,7 +35,7 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
             src="/assets/componentes/flor2.png"
             alt=""
             fill
-            className="object-contain object-right-top"
+            className="object-contain object-top-right"
             priority
           />
         </div>
@@ -45,7 +45,7 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
       <div className="relative z-10 flex flex-col items-center -mt-16 pb-6">
 
         {/* Sello / Monograma */}
-        <div className="animate-fade-up delay-400 w-[76px] h-[76px] mb-4">
+        <div className="animate-fade-up delay-400 w-19 h-19 mb-4">
           <Image
             src="/assets/componentes/monogramaSello.png"
             alt="Monograma"
@@ -88,15 +88,12 @@ export default function HeroSection({ nombreFamilia, pasesAsignados }: HeroSecti
       </div>
 
       {/* ── Foto de los novios ─────────────────────────────── */}
-      <div className="animate-fade-in delay-800 relative w-full flex-1 min-h-[320px]">
-        <Image
-          src="/assets/photos/fotoHeroSection.png"
-          alt="José y Daiana"
-          fill
-          className="object-cover object-top"
-          priority
-        />
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/assets/photos/fotoHeroSection.png"
+        alt="José y Daiana"
+        className="animate-fade-in delay-800 w-full h-auto block"
+      />
 
     </section>
   );
