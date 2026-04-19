@@ -76,7 +76,7 @@ export default function NosotrosSection() {
 
       {/* ── Bendición ─────────────────────────────────────── */}
       <p className="font-principal font-bold text-2xl tracking-[0.15em] uppercase text-azul text-center leading-relaxed mb-8 font-regular px-7">
-        Con la bendición de Dios y nuestros padres
+        Con la bendición de Dios y nuestros padres nos unimos en matrimonio
       </p>
 
       {/* ── Padres ────────────────────────────────────────── */}
@@ -84,20 +84,20 @@ export default function NosotrosSection() {
 
         {/* Madre de la Novia */}
         <div className="text-center pt-1">
-          <p className="font-principal text-lg text-azul tracking-wide">
+          <p className="font-principal text-base text-azul tracking-wide">
             Laura Mendoza López
           </p>
-          <p className="font-principal text-base tracking-[0.15em] uppercase text-azul mt-0.5 font-thin">
+          <p className="font-principal text-sm tracking-[0.15em] uppercase text-azul mt-0.5 font-thin">
             Madre de la Novia
           </p>
         </div>
 
         {/* Padres del Novio */}
         <div className="text-center pt-8">
-          <p className="font-principal text-lg text-azul tracking-wide">
+          <p className="font-principal text-base text-azul tracking-wide">
             José Antonio Maltes García<br />Doris Elena Cuevas Tejeda
           </p>
-          <p className="font-principal text-base tracking-[0.15em] uppercase text-azul mt-0.5 font-thin">
+          <p className="font-principal text-sm tracking-[0.15em] uppercase text-azul mt-0.5 font-thin">
             Padres del Novio
           </p>
         </div>

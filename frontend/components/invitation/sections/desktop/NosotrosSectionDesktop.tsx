@@ -65,7 +65,7 @@ export default function NosotrosSectionDesktop() {
 
           {/* Bendición */}
           <p className="font-principal font-bold text-lg tracking-[0.15em] uppercase text-azul leading-relaxed mb-10">
-            Con la bendición de Dios<br />y nuestros padres
+            Con la bendición de Dios<br />y nuestros padres nos unimos en matrimonio
           </p>
 
           {/* Padres */}
