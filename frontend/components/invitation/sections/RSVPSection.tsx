@@ -172,7 +172,7 @@ export default function RSVPSection({ token, nombreFamilia, ApellidosFamilia, es
         Confirma tu Asistencia
       </p>
       <p className="font-principal text-sm text-azul/60 text-center tracking-[0.06em] mb-8">
-        Por favor confirmar asistencia antes del 1 de junio de 2026
+        Por favor confirmar antes del 1 de junio de 2026
       </p>
 
       {/* ── Contenido según status ──────────────────────────── */}
