@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { useInView } from '@/hooks/useInView';
 
 const HOTELES = [
-  { nombre: 'MM Grand Hotel Puebla, Tapestry Collection by Hilton', distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/4Uwgz3LFNF9446Uw7', telefono: '2227949999', urlWhatsapp: 'https://wa.link/73gjb0' },
   { nombre: 'Fiesta Inn Puebla Las Ánimas',     distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/9zCGdmp1jwVCDUu29', telefono: '2226058000' },
   { nombre: 'Holiday Inn Puebla la Noria',      distancia: 'Entre 20 a 35 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/VN3sevfgpTJXCanb6', telefono: '2221208706' },
+  { nombre: 'MM Grand Hotel Puebla, Tapestry Collection by Hilton', distancia: 'Entre 20 a 25 minutos del evento', urlDetalles: 'https://maps.app.goo.gl/4Uwgz3LFNF9446Uw7', telefono: '2227949999', urlWhatsapp: 'https://wa.link/rp8idq' },
 ];
 
 function HotelCard({ nombre, distancia, urlDetalles, telefono, index, urlWhatsapp }: { nombre: string; distancia: string; urlDetalles: string; telefono: string; index: number; urlWhatsapp?: string }) {
