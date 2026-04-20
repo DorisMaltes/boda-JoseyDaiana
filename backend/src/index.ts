@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import { guestRouter } from './routes/guest.routes';
 import { rsvpRouter } from './routes/rsvp.routes';
+import { dashboardRouter } from './routes/dashboard.routes';
 import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
@@ -19,6 +20,7 @@ app.get('/health', (_req, res) => {
 
 app.use('/guest', guestRouter);
 app.use('/rsvp', rsvpRouter);
+app.use('/dashboard', dashboardRouter);
 
 app.use(errorHandler);
 
