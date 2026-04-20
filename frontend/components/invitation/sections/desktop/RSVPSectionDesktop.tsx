@@ -153,8 +153,11 @@ export default function RSVPSectionDesktop({ token, nombreFamilia, ApellidosFami
 
         {/* ── Columna derecha: formulario ──────────────────────── */}
         <div className="flex flex-col">
-          <p className="font-principal font-bold text-base text-azul tracking-[0.18em] uppercase mb-8">
+          <p className="font-principal font-bold text-base text-azul tracking-[0.18em] uppercase mb-2">
             Confirma tu Asistencia
+          </p>
+          <p className="font-principal text-sm text-azul/60 tracking-[0.06em] mb-8">
+            Por favor confirmar asistencia antes del 1 de junio de 2026
           </p>
 
           {status === 'confirmado' && <StatusConfirmado pasesConfirmados={pases} />}

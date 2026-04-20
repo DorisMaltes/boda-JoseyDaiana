@@ -168,8 +168,11 @@ export default function RSVPSection({ token, nombreFamilia, ApellidosFamilia, es
       </p>
 
       {/* ── Título formulario ───────────────────────────────── */}
-      <p className="font-principal font-bold text-base text-azul text-center tracking-[0.18em] uppercase mb-8">
+      <p className="font-principal font-bold text-base text-azul text-center tracking-[0.18em] uppercase mb-2">
         Confirma tu Asistencia
+      </p>
+      <p className="font-principal text-sm text-azul/60 text-center tracking-[0.06em] mb-8">
+        Por favor confirmar asistencia antes del 1 de junio de 2026
       </p>
 
       {/* ── Contenido según status ──────────────────────────── */}
