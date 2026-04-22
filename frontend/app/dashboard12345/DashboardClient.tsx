@@ -193,12 +193,12 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">
-                  <th className="px-5 py-3">Familia</th>
-                  <th className="px-5 py-3">Apellidos</th>
-                  <th className="px-5 py-3">Estado</th>
-                  <th className="px-5 py-3 text-center">Asignados</th>
-                  <th className="px-5 py-3 text-center">Confirmados</th>
-                  <th className="px-5 py-3">Mensaje</th>
+                  <th className="px-5 py-3">Invitado</th>
+                  <th className="px-5 py-3">Familia</th>  
+                  <th className="px-5 py-3">Estado RSVP</th>
+                  <th className="px-5 py-3 text-center">Pases Asignados</th>
+                  <th className="px-5 py-3 text-center">Pases Confirmados</th>
+                  
                   <th className="px-5 py-3">
                     <button
                       onClick={() =>
@@ -208,7 +208,7 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
                       }
                       className="flex items-center gap-1 hover:text-gray-700 transition-colors"
                     >
-                      Confirmó
+                      CONFIRMÓ
                       <span className="text-gray-300">
                         {sortByDate === 'desc' ? '↓' : sortByDate === 'asc' ? '↑' : '↕'}
                       </span>
@@ -227,10 +227,14 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
                 {filtered.map(g => (
                   <tr key={g.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-5 py-3.5 font-medium text-gray-900 whitespace-nowrap">
-                      {g.pasesAsignados > 1 ? `Fam. ${g.ApellidosFamilia}` : g.nombreFamilia}
+                      
+                      {g.nombreFamilia}
+                      
                     </td>
                     <td className="px-5 py-3.5 text-gray-500 whitespace-nowrap">
-                      {g.nombreFamilia ?? '—'}
+                      {g.esFamilia ? (g.ApellidosFamilia ?? '-') : '-'}
+                      
+                      
                     </td>
                     <td className="px-5 py-3.5">
                       <span
@@ -251,13 +255,7 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
                         {g.statusRSVP === 'pendiente' ? '—' : g.pasesConfirmados}
                       </span>
                     </td>
-                    <td className="px-5 py-3.5 text-gray-600 max-w-xs">
-                      {g.mensajeParanovios?.trim() ? (
-                        <span className="italic">&ldquo;{g.mensajeParanovios.trim()}&rdquo;</span>
-                      ) : (
-                        <span className="text-gray-300">—</span>
-                      )}
-                    </td>
+                    
                     <td className="px-5 py-3.5 text-gray-400 whitespace-nowrap text-xs">
                       {formatDate(g.confirmedAt ?? g.respondedAt)}
                     </td>
