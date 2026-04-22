@@ -13,6 +13,7 @@ export interface DashboardGuest {
   statusRSVP: 'pendiente' | 'confirmado' | 'declinado';
   mensajeParanovios?: string | null;
   respondedAt?: string | null;
+  confirmedAt?: string | null;
   created_at: string;
 }
 

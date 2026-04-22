@@ -15,6 +15,7 @@ export interface DashboardGuest {
   statusRSVP: RsvpStatus;
   mensajeParanovios?: string | null;
   respondedAt?: string | null;
+  confirmedAt?: string | null;
   created_at: string;
 }
 
@@ -45,6 +46,8 @@ function formatDate(iso: string | null | undefined) {
 
 export default function DashboardClient({ guests }: { guests: DashboardGuest[] }) {
   const [filter, setFilter] = useState<FilterTab>('todos');
+  const [search, setSearch] = useState('');
+  const [sortByDate, setSortByDate] = useState<'asc' | 'desc' | null>(null);
 
   const confirmados = guests.filter(g => g.statusRSVP === 'confirmado');
   const pendientes = guests.filter(g => g.statusRSVP === 'pendiente');
@@ -53,10 +56,27 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
   const totalPasesAsignados = guests.reduce((s, g) => s + g.pasesAsignados, 0);
   const totalPasesConfirmados = confirmados.reduce((s, g) => s + g.pasesConfirmados, 0);
 
-  const filtered =
+  const query = search.toLowerCase().trim();
+
+  let filtered =
     filter === 'todos'
       ? guests
       : guests.filter(g => g.statusRSVP === filter);
+
+  if (query) {
+    filtered = filtered.filter(g =>
+      g.nombreFamilia.toLowerCase().includes(query) ||
+      (g.ApellidosFamilia ?? '').toLowerCase().includes(query)
+    );
+  }
+
+  if (sortByDate !== null) {
+    filtered = [...filtered].sort((a, b) => {
+      const ta = a.confirmedAt ? new Date(a.confirmedAt).getTime() : 0;
+      const tb = b.confirmedAt ? new Date(b.confirmedAt).getTime() : 0;
+      return sortByDate === 'asc' ? ta - tb : tb - ta;
+    });
+  }
 
   const mensajes = guests.filter(g => g.mensajeParanovios?.trim());
 
@@ -135,28 +155,37 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
 
         {/* Filter tabs + Table */}
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-          {/* Tabs */}
-          <div className="flex gap-1 p-4 border-b border-gray-100 overflow-x-auto">
-            {tabs.map(t => (
-              <button
-                key={t.key}
-                onClick={() => setFilter(t.key)}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
-                  filter === t.key
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-              >
-                {t.label}
-                <span
-                  className={`text-xs px-1.5 py-0.5 rounded-md ${
-                    filter === t.key ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'
+          {/* Tabs + Search */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 p-4 border-b border-gray-100">
+            <div className="flex gap-1 overflow-x-auto flex-1">
+              {tabs.map(t => (
+                <button
+                  key={t.key}
+                  onClick={() => setFilter(t.key)}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+                    filter === t.key
+                      ? 'bg-gray-900 text-white'
+                      : 'text-gray-600 hover:bg-gray-100'
                   }`}
                 >
-                  {t.count}
-                </span>
-              </button>
-            ))}
+                  {t.label}
+                  <span
+                    className={`text-xs px-1.5 py-0.5 rounded-md ${
+                      filter === t.key ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-500'
+                    }`}
+                  >
+                    {t.count}
+                  </span>
+                </button>
+              ))}
+            </div>
+            <input
+              type="text"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Buscar por familia o apellido…"
+              className="w-full sm:w-64 px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            />
           </div>
 
           {/* Table */}
@@ -170,7 +199,21 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
                   <th className="px-5 py-3 text-center">Asignados</th>
                   <th className="px-5 py-3 text-center">Confirmados</th>
                   <th className="px-5 py-3">Mensaje</th>
-                  <th className="px-5 py-3">Respondió</th>
+                  <th className="px-5 py-3">
+                    <button
+                      onClick={() =>
+                        setSortByDate(prev =>
+                          prev === null ? 'desc' : prev === 'desc' ? 'asc' : null
+                        )
+                      }
+                      className="flex items-center gap-1 hover:text-gray-700 transition-colors"
+                    >
+                      Confirmó
+                      <span className="text-gray-300">
+                        {sortByDate === 'desc' ? '↓' : sortByDate === 'asc' ? '↑' : '↕'}
+                      </span>
+                    </button>
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -184,10 +227,10 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
                 {filtered.map(g => (
                   <tr key={g.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-5 py-3.5 font-medium text-gray-900 whitespace-nowrap">
-                      {g.pasesAsignados > 1 ? `Fam. ${g.nombreFamilia}` : g.nombreFamilia}
+                      {g.pasesAsignados > 1 ? `Fam. ${g.ApellidosFamilia}` : g.nombreFamilia}
                     </td>
                     <td className="px-5 py-3.5 text-gray-500 whitespace-nowrap">
-                      {g.ApellidosFamilia ?? '—'}
+                      {g.nombreFamilia ?? '—'}
                     </td>
                     <td className="px-5 py-3.5">
                       <span
@@ -216,7 +259,7 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
                       )}
                     </td>
                     <td className="px-5 py-3.5 text-gray-400 whitespace-nowrap text-xs">
-                      {formatDate(g.respondedAt)}
+                      {formatDate(g.confirmedAt ?? g.respondedAt)}
                     </td>
                   </tr>
                 ))}

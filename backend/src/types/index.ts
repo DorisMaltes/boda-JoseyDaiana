@@ -10,6 +10,7 @@ export interface Guest {
   pasesConfirmados: number;
   statusRSVP: RsvpStatus;
   respondedAt?: string | null;
+  confirmedAt?: string | null;
   created_at: string;
 }
 

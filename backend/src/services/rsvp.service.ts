@@ -37,6 +37,7 @@ export async function upsertRsvp(payload: RsvpPayload): Promise<Guest> {
   const updateData: Record<string, unknown> = {
     statusRSVP: payload.status,
     pasesConfirmados: finalPases,
+    confirmedAt: new Date().toISOString(),
   };
   if (payload.mensajeParanovios !== undefined) {
     updateData.mensajeParanovios = payload.mensajeParanovios;
