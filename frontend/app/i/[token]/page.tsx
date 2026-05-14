@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { getGuest } from '@/services/guestService';
 import MobileInvitation from '@/components/invitation/layouts/MobileInvitation';
 import DesktopInvitation from '@/components/invitation/layouts/DesktopInvitation';
+import { Analytics } from "@vercel/analytics/next"
 
 interface Props {
   params: Promise<{ token: string }>;
@@ -28,6 +29,7 @@ export default async function InvitationPage({ params }: Props) {
       <div className="hidden md:block">
         <DesktopInvitation guest={guest} />
       </div>
+      <Analytics />
     </main>
   );
 }
