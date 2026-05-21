@@ -119,7 +119,7 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
           <StatCard
             label="Pendientes"
             value={pendientes.length-1}
-            sub="Sin responder"
+            sub="Invitaciones Sin responder"
             color="bg-amber-50 border-amber-200 text-amber-700"
           />
           <StatCard
