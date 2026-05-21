@@ -89,6 +89,7 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
+      <h1></h1>
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-5">
         <div className="max-w-7xl mx-auto">
@@ -103,20 +104,21 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
         {/* Stats cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <StatCard
-            label="Total familias"
-            value={guests.length}
+            label="Total pases Confirmados"
+            value={totalPasesConfirmados}
             sub={`${totalPasesAsignados} pases asignados`}
             color="bg-blue-50 border-blue-200 text-blue-700"
           />
           <StatCard
-            label="Confirmados"
+            label="Invitaciones Confirmadas"
             value={confirmados.length}
-            sub={`${totalPasesConfirmados} pases confirmados`}
+            sub={`de ${guests.length - 1} invitaciones`}
+            
             color="bg-emerald-50 border-emerald-200 text-emerald-700"
           />
           <StatCard
             label="Pendientes"
-            value={pendientes.length}
+            value={pendientes.length-1}
             sub="Sin responder"
             color="bg-amber-50 border-amber-200 text-amber-700"
           />
@@ -132,7 +134,7 @@ export default function DashboardClient({ guests }: { guests: DashboardGuest[] }
         <div className="bg-white rounded-xl border border-gray-200 p-5">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">Pases confirmados</span>
-            <span className="text-sm font-semibold text-gray-900">
+            <span className="text-sm font-semibold text-gray-900 ">
               {totalPasesConfirmados} / {totalPasesAsignados}
             </span>
           </div>
