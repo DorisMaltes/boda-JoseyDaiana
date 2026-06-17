@@ -1,4 +1,6 @@
 import { supabase } from '../config/supabase';
+import { AppError } from '../middleware/errorHandler';
+import { CreateGuestPayload, UpdateGuestPayload } from '../types';
 
 const TABLE = 'Invitados-Boda';
 
@@ -28,4 +30,55 @@ export async function getAllGuests(): Promise<DashboardGuest[]> {
   }
 
   return (data ?? []) as DashboardGuest[];
+}
+
+// insserta una nueva fila
+export async function createGuest(payload: CreateGuestPayload): Promise<DashboardGuest> {
+  const { data, error } = await supabase
+    .from(TABLE)
+    .insert({
+      nombreFamilia: payload.nombreFamilia,
+      ApellidosFamilia: payload.ApellidosFamilia ?? null,
+      esFamilia: payload.esFamilia ?? false,
+      pasesAsignados: payload.pasesAsignados,
+      pasesConfirmados: 0,
+      statusRSVP: 'pendiente',
+    })
+    .select()
+    .single();
+
+  if (error || !data) {
+    throw new AppError(500, error?.message ?? 'Error al crear invitado');
+  }
+
+  return data as DashboardGuest;
+}
+
+//pasa la información o el payload directo a Supabase .update, como todo los datos son opcioneles solo se mandan los camposo que realemnte quiera cambiar, tambien se hace por su ID
+
+export async function updateGuest(id: number, payload: UpdateGuestPayload): Promise<DashboardGuest> {
+  const { data, error } = await supabase
+    .from(TABLE)
+    .update(payload)
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error || !data) {
+    throw new AppError(500, error?.message ?? 'Error al actualizar invitado');
+  }
+
+  return data as DashboardGuest;
+}
+
+// borra al invitado por su ID
+export async function deleteGuest(id: number): Promise<void> {
+  const { error } = await supabase
+    .from(TABLE)
+    .delete()
+    .eq('id', id);
+
+  if (error) {
+    throw new AppError(500, error.message);
+  }
 }

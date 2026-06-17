@@ -20,3 +20,23 @@ export interface RsvpPayload {
   pasesConfirmados: number;
   mensajeParanovios?: string;
 }
+
+//los campos que el admin proveé cuando agrega un nuevo invitado
+export interface CreateGuestPayload {
+  nombreFamilia: string;
+  ApellidosFamilia?: string;
+  esFamilia?: boolean;
+  pasesAsignados: number;
+}
+
+//cada campo es opcional, para que el admin pueda cambiar lo que le plazca 
+export interface UpdateGuestPayload {
+  nombreFamilia?: string;
+  ApellidosFamilia?: string;
+  esFamilia?: boolean;
+  pasesAsignados?: number;
+  pasesConfirmados?: number;
+  statusRSVP?: RsvpStatus;
+  mensajeParanovios?: string;
+}
+

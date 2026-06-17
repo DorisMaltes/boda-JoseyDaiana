@@ -33,3 +33,4 @@ export default async function InvitationPage({ params }: Props) {
     </main>
   );
 }
+//este componente del servidor ahora lee la sesion de Supabase de las cookies, extrae el JWT acces token, y se la pasa al guest fetch call y como un pop al componente del cliente para que pueda ser usado para las CRUD calls

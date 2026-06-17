@@ -16,10 +16,14 @@ export class ApiError extends Error {
 
 export async function apiFetch<T>(
   path: string,
-  options?: RequestInit
+  options?: RequestInit,
+  token?: string
 ): Promise<T> {
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+
   const res = await fetch(`${BASE_URL}${path}`, {
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     ...options,
   });
 
@@ -27,6 +31,8 @@ export async function apiFetch<T>(
     const body = await res.json().catch(() => ({}));
     throw new ApiError(res.status, (body as { error?: string }).error ?? `Request failed (${res.status})`);
   }
+
+  if (res.status === 204) return undefined as T;
 
   return res.json() as Promise<T>;
 }
