@@ -179,7 +179,7 @@ export default function RSVPSection({ token, nombreFamilia, ApellidosFamilia, es
         Confirma tu Asistencia
       </p>
       <p className="font-principal text-sm text-azul/60 text-center tracking-[0.06em] mb-8">
-        Por favor confirmar antes del {DEADLINE[rondaInvitado ?? 1] ?? DEADLINE[1]}
+        Por favor confirmar antes del {getDeadline(rondaInvitado)}
       </p>
 
       {/* ── Contenido según status ──────────────────────────── */}
