@@ -90,7 +90,7 @@ function StatusDeclinado() {
   );
 }
 
-export default function RSVPSectionDesktop({ token, nombreFamilia, ApellidosFamilia, esFamilia, pasesAsignados, pasesConfirmados: initialPases, statusRSVP: initialStatus }: Props) {
+export default function RSVPSectionDesktop({ token, nombreFamilia, ApellidosFamilia, esFamilia, pasesAsignados, pasesConfirmados: initialPases, statusRSVP: initialStatus, rondaInvitado }: Props) {
   const [status, setStatus]           = useState<RsvpStatus>(initialStatus);
   const [pases, setPases]             = useState(initialPases);
   const [asistencia, setAsistencia]   = useState('');
