@@ -84,6 +84,7 @@ export default function DesktopInvitation({ guest }: Props) {
           pasesConfirmados={guest.pasesConfirmados}
           statusRSVP={guest.statusRSVP}
           mensajeParanovios={guest.mensajeParanovios}
+          rondaInvitado={guest.rondaInvitado}
         />
       </div>
 
