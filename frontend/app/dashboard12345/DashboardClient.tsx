@@ -148,12 +148,12 @@ export default function DashboardClient({
           ApellidosFamilia: createForm.esFamilia ? (createForm.ApellidosFamilia || undefined) : undefined,
           esFamilia: createForm.esFamilia,
           pasesAsignados: Number(createForm.pasesAsignados),
-          rondaInvitado: Number(createForm.rondaInvitado),
+          rondaInvitados: Number(createForm.rondaInvitados),
         }),
       }, token);
       setGuests(prev => [...prev, created]);
       setShowCreate(false);
-      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false , rondaInvitado: '1'});
+      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false, rondaInvitados: '1' });
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'Error al crear invitado');
     }
