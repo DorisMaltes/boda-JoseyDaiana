@@ -289,7 +289,7 @@ export default function DashboardClient({
             <div className="grid grid-cols-2 gap-3">
               <NumberStepper label="Pases asignados *" value={Number(createForm.pasesAsignados)} min={1}
                 onChange={v => setCreateForm(p => ({ ...p, pasesAsignados: String(v) }))} />
-              <NumberStepper label="Ronda *" value={Number(createForm.rondaInvitado)} min={1}
+              <NumberStepper label="Ronda *" value={Number(createForm.rondaInvitado)} min={1} max={3}
                 onChange={v => setCreateForm(p => ({ ...p, rondaInvitado: String(v) }))} />
             </div>
             <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
@@ -348,7 +348,7 @@ export default function DashboardClient({
               <NumberStepper label="Pases confirmados" value={editForm.pasesConfirmados ?? 0} min={0}
                 max={editForm.pasesAsignados ?? undefined}
                 onChange={v => setEditForm(p => ({ ...p, pasesConfirmados: v }))} />
-              <NumberStepper label="Ronda" value={editForm.rondaInvitado ?? 1} min={1}
+              <NumberStepper label="Ronda" value={editForm.rondaInvitado ?? 1} min={1} max={3}
                 onChange={v => setEditForm(p => ({ ...p, rondaInvitado: v }))} />
             </div>
             <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
