@@ -13,6 +13,7 @@ const createGuestSchema = z.object({
   ApellidosFamilia: z.string().optional(),
   esFamilia: z.boolean().optional(),
   pasesAsignados: z.number().int().min(1),
+  rondaInvitados: z.number().int().min(1),
 });
 
 const updateGuestSchema = z.object({
@@ -22,6 +23,7 @@ const updateGuestSchema = z.object({
   pasesAsignados: z.number().int().min(1).optional(),
   pasesConfirmados: z.number().int().min(0).optional(),
   statusRSVP: z.enum(['pendiente', 'confirmado', 'declinado']).optional(),
+  rondaInvitados: z.number().int().min(1).optional(),
   mensajeParanovios: z.string().optional(),
 });
 
