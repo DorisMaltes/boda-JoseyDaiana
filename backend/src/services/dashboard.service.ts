@@ -17,7 +17,7 @@ export interface DashboardGuest {
   respondedAt?: string | null;
   confirmedAt?: string | null;
   created_at: string;
-  rondaInvitados: number;
+  rondaInvitado: number;
 
 }
 
@@ -45,7 +45,7 @@ export async function createGuest(payload: CreateGuestPayload): Promise<Dashboar
       pasesAsignados: payload.pasesAsignados,
       pasesConfirmados: 0,
       statusRSVP: 'pendiente',
-      rondaInvitados: payload.rondaInvitados ?? 1,
+      rondaInvitado: payload.rondaInvitado ?? 1,
 
     })
     .select()
