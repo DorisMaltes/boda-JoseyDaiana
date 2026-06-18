@@ -5,6 +5,12 @@ import { useState, useRef, useEffect } from 'react';
 import { submitRsvp } from '@/services/guestService';
 import type { RsvpStatus } from '@/types';
 
+const DEADLINE: Record<number, string> = {
+  1: '1 de julio de 2026',
+  2: '1 de agosto de 2026',
+  3: '1 de noviembre de 2026',
+};
+
 interface Props {
   token: string;
   nombreFamilia: string;
@@ -14,6 +20,7 @@ interface Props {
   pasesConfirmados: number;
   statusRSVP: RsvpStatus;
   mensajeParanovios?: string;
+  rondaInvitado?: number;
 }
 
 /* ── Dropdown ─────────────────────────────────────────────── */
