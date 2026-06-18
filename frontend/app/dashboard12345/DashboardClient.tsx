@@ -471,6 +471,7 @@ export default function DashboardClient({
                   <th className="px-5 py-3">Estado</th>
                   <th className="px-5 py-3 text-center">Pases Asignados</th>
                   <th className="px-5 py-3 text-center">Pases Confirmados</th>
+                  <th className="px-5 py-3 text-center">Ronda</th>
                   <th className="px-5 py-3">
                     <button onClick={() => setSortByDate(prev => prev === null ? 'desc' : prev === 'desc' ? 'asc' : null)}
                       className="flex items-center gap-1 hover:text-gray-700 transition-colors">
