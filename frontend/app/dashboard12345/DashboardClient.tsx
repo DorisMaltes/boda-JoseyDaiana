@@ -341,24 +341,13 @@ export default function DashboardClient({
               </select>
             </div>
             <div className="grid grid-cols-3 gap-3">
-              <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Pases asignados *</label>
-                <input type="number" required min={1} value={editForm.pasesAsignados ?? 1}
-                  onChange={e => setEditForm(p => ({ ...p, pasesAsignados: Number(e.target.value) }))}
-                  className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Pases confirmados</label>
-                <input type="number" min={0} value={editForm.pasesConfirmados ?? 0}
-                  onChange={e => setEditForm(p => ({ ...p, pasesConfirmados: Number(e.target.value) }))}
-                  className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Ronda</label>
-                <input type="number" min={1} value={editForm.rondaInvitado ?? 1}
-                  onChange={e => setEditForm(p => ({ ...p, rondaInvitado: Number(e.target.value) }))}
-                  className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
-              </div>
+              <NumberStepper label="Pases asignados *" value={editForm.pasesAsignados ?? 1} min={1}
+                onChange={v => setEditForm(p => ({ ...p, pasesAsignados: v }))} />
+              <NumberStepper label="Pases confirmados" value={editForm.pasesConfirmados ?? 0} min={0}
+                max={editForm.pasesAsignados ?? undefined}
+                onChange={v => setEditForm(p => ({ ...p, pasesConfirmados: v }))} />
+              <NumberStepper label="Ronda" value={editForm.rondaInvitado ?? 1} min={1}
+                onChange={v => setEditForm(p => ({ ...p, rondaInvitado: v }))} />
             </div>
             <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
               <input type="checkbox" checked={editForm.esFamilia ?? false}
