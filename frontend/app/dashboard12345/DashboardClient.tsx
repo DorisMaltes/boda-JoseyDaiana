@@ -507,6 +507,7 @@ export default function DashboardClient({
                         {g.statusRSVP === 'pendiente' ? '—' : g.pasesConfirmados}
                       </span>
                     </td>
+                    <td className="px-5 py-3.5 text-center text-gray-700">{g.rondaInvitados}</td>
                     <td className="px-5 py-3.5 text-gray-400 whitespace-nowrap text-xs">
                       {formatDate(g.confirmedAt ?? g.respondedAt)}
                     </td>
