@@ -435,7 +435,7 @@ export default function DashboardClient({
           <StatCard label="Pendientes" value={pendientes.length}
             sub="Sin responder" color="bg-amber-50 border-amber-200 text-amber-700" />
           <StatCard label="Declinados" value={declinados.length}
-            sub="No asistirán" color="bg-red-50 border-red-200 text-red-700" />
+            sub={`${totalPasesDeclinados} pases declinados`} color="bg-red-50 border-red-200 text-red-700" />
         </div>
 
         {/* Progress bar */}
