@@ -13,6 +13,7 @@ export interface Guest {
   respondedAt?: string | null;
   created_at: string;
   mensajeParanovios?: Mensaje;
+  rondaInvitado: number;
 }
 
 export interface RsvpPayload {
