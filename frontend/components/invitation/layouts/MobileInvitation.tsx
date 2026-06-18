@@ -85,6 +85,7 @@ export default function MobileInvitation({ guest }: Props) {
           pasesConfirmados={guest.pasesConfirmados}
           mensajeParanovios={guest.mensajeParanovios}
           statusRSVP={guest.statusRSVP}
+          rondaInvitado={guest.rondaInvitado}
         />
       </div>
 
