@@ -90,6 +90,38 @@ function FormField({ label, value, onChange, type = 'text', required, min, max }
   );
 }
 
+interface NumberStepperProps {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+  min?: number;
+  max?: number;
+}
+function NumberStepper({ label, value, onChange, min = 0, max }: NumberStepperProps) {
+  const decrement = () => { if (value > min) onChange(value - 1); };
+  const increment = () => { if (max === undefined || value < max) onChange(value + 1); };
+  return (
+    <div>
+      <label className="block text-xs font-medium text-gray-600 mb-1">{label}</label>
+      <div className="flex items-center rounded-lg border border-gray-200 overflow-hidden">
+        <button type="button" onClick={decrement}
+          className="px-3 py-2 text-gray-500 hover:bg-gray-100 transition-colors text-base font-medium disabled:opacity-30"
+          disabled={value <= min}>
+          −
+        </button>
+        <span className="flex-1 text-center text-sm font-semibold text-gray-800 select-none">
+          {value}
+        </span>
+        <button type="button" onClick={increment}
+          className="px-3 py-2 text-gray-500 hover:bg-gray-100 transition-colors text-base font-medium disabled:opacity-30"
+          disabled={max !== undefined && value >= max}>
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function DashboardClient({
