@@ -244,6 +244,7 @@ export default function DashboardClient({
   const declinados = guests.filter(g => g.statusRSVP === 'declinado');
   const totalPasesAsignados = guests.reduce((s, g) => s + g.pasesAsignados, 0);
   const totalPasesConfirmados = confirmados.reduce((s, g) => s + g.pasesConfirmados, 0);
+  const totalPasesDeclinados = declinados.reduce((s, g) => s + g.pasesAsignados, 0);
 
   const query = search.toLowerCase().trim();
   let filtered = filter === 'todos' ? guests : guests.filter(g => g.statusRSVP === filter);
