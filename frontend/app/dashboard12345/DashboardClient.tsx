@@ -19,7 +19,7 @@ export interface DashboardGuest {
   statusRSVP: RsvpStatus;
   mensajeParanovios?: string | null;
 
-  rondaInvitados: number;
+  rondaInvitado: number;
   
   respondedAt?: string | null;
   confirmedAt?: string | null;
@@ -122,7 +122,7 @@ export default function DashboardClient({
   const [createForm, setCreateForm] = useState({
     nombreFamilia: '', ApellidosFamilia: '',
     pasesAsignados: '1', esFamilia: false,
-    rondaInvitados: '1',
+    rondaInvitado: '1',
   });
 
   // ── Edit form state ─────────────────────────────────────────────────────────
@@ -148,12 +148,12 @@ export default function DashboardClient({
           ApellidosFamilia: createForm.esFamilia ? (createForm.ApellidosFamilia || undefined) : undefined,
           esFamilia: createForm.esFamilia,
           pasesAsignados: Number(createForm.pasesAsignados),
-          rondaInvitados: Number(createForm.rondaInvitados),
+          rondaInvitado: Number(createForm.rondaInvitado),
         }),
       }, token);
       setGuests(prev => [...prev, created]);
       setShowCreate(false);
-      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false, rondaInvitados: '1' });
+      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false, rondaInvitado: '1' });
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'Error al crear invitado');
     }
@@ -167,7 +167,7 @@ export default function DashboardClient({
       pasesAsignados: g.pasesAsignados,
       pasesConfirmados: g.pasesConfirmados,
       statusRSVP: g.statusRSVP,
-      rondaInvitados: g.rondaInvitados
+      rondaInvitado: g.rondaInvitado
     });
     setEditTarget(g);
     setActionError(null);
@@ -261,8 +261,8 @@ export default function DashboardClient({
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Ronda *</label>
-                <input type="number" required min={1} value={createForm.rondaInvitados}
-                  onChange={e => setCreateForm(p => ({ ...p, rondaInvitados: e.target.value }))}
+                <input type="number" required min={1} value={createForm.rondaInvitado}
+                  onChange={e => setCreateForm(p => ({ ...p, rondaInvitado: e.target.value }))}
                   className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
               </div>
             </div>
@@ -331,8 +331,8 @@ export default function DashboardClient({
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Ronda</label>
-                <input type="number" min={1} value={editForm.rondaInvitados ?? 1}
-                  onChange={e => setEditForm(p => ({ ...p, rondaInvitados: Number(e.target.value) }))}
+                <input type="number" min={1} value={editForm.rondaInvitado ?? 1}
+                  onChange={e => setEditForm(p => ({ ...p, rondaInvitado: Number(e.target.value) }))}
                   className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
               </div>
             </div>
@@ -507,7 +507,7 @@ export default function DashboardClient({
                         {g.statusRSVP === 'pendiente' ? '—' : g.pasesConfirmados}
                       </span>
                     </td>
-                    <td className="px-5 py-3.5 text-center text-gray-700">{g.rondaInvitados}</td>
+                    <td className="px-5 py-3.5 text-center text-gray-700">{g.rondaInvitado}</td>
                     <td className="px-5 py-3.5 text-gray-400 whitespace-nowrap text-xs">
                       {formatDate(g.confirmedAt ?? g.respondedAt)}
                     </td>
