@@ -27,6 +27,8 @@ export interface CreateGuestPayload {
   ApellidosFamilia?: string;
   esFamilia?: boolean;
   pasesAsignados: number;
+  rondaInvitado?: number;
+
 }
 
 //cada campo es opcional, para que el admin pueda cambiar lo que le plazca 
@@ -38,5 +40,6 @@ export interface UpdateGuestPayload {
   pasesConfirmados?: number;
   statusRSVP?: RsvpStatus;
   mensajeParanovios?: string;
+  rondaInvitado?: number;
 }
 
