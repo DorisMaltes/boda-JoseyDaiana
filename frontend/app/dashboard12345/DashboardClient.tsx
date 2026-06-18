@@ -316,7 +316,7 @@ export default function DashboardClient({
                 <option value="declinado">Declinado</option>
               </select>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-3 gap-3">
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Pases asignados *</label>
                 <input type="number" required min={1} value={editForm.pasesAsignados ?? 1}
@@ -327,6 +327,12 @@ export default function DashboardClient({
                 <label className="block text-xs font-medium text-gray-600 mb-1">Pases confirmados</label>
                 <input type="number" min={0} value={editForm.pasesConfirmados ?? 0}
                   onChange={e => setEditForm(p => ({ ...p, pasesConfirmados: Number(e.target.value) }))}
+                  className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">Ronda</label>
+                <input type="number" min={1} value={editForm.rondaInvitados ?? 1}
+                  onChange={e => setEditForm(p => ({ ...p, rondaInvitados: Number(e.target.value) }))}
                   className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
               </div>
             </div>
