@@ -18,6 +18,8 @@ export interface DashboardGuest {
   pasesConfirmados: number;
   statusRSVP: RsvpStatus;
   mensajeParanovios?: string | null;
+
+  rondaInvitados: number;
   
   respondedAt?: string | null;
   confirmedAt?: string | null;
@@ -120,6 +122,7 @@ export default function DashboardClient({
   const [createForm, setCreateForm] = useState({
     nombreFamilia: '', ApellidosFamilia: '',
     pasesAsignados: '1', esFamilia: false,
+    rondaInvitados: '1',
   });
 
   // ── Edit form state ─────────────────────────────────────────────────────────
@@ -145,11 +148,12 @@ export default function DashboardClient({
           ApellidosFamilia: createForm.esFamilia ? (createForm.ApellidosFamilia || undefined) : undefined,
           esFamilia: createForm.esFamilia,
           pasesAsignados: Number(createForm.pasesAsignados),
+          rondaInvitado: Number(createForm.rondaInvitado),
         }),
       }, token);
       setGuests(prev => [...prev, created]);
       setShowCreate(false);
-      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false });
+      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false , rondaInvitado: '1'});
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'Error al crear invitado');
     }
@@ -163,6 +167,7 @@ export default function DashboardClient({
       pasesAsignados: g.pasesAsignados,
       pasesConfirmados: g.pasesConfirmados,
       statusRSVP: g.statusRSVP,
+      rondaInvitados: g.rondaInvitados
     });
     setEditTarget(g);
     setActionError(null);
