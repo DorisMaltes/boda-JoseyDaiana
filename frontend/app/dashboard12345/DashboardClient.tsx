@@ -434,7 +434,7 @@ export default function DashboardClient({
           <StatCard label="Invitaciones Confirmadas" value={confirmados.length}
             sub={`de ${guests.length} invitaciones`} color="bg-emerald-50 border-emerald-200 text-emerald-700" />
           <StatCard label="Pendientes" value={pendientes.length}
-            sub="Sin responder" color="bg-amber-50 border-amber-200 text-amber-700" />
+            sub={`${totalPasesPendientes} pases sin responder`} color="bg-amber-50 border-amber-200 text-amber-700" />
           <StatCard label="Declinados" value={declinados.length}
             sub={`${totalPasesDeclinados} pases declinados`} color="bg-red-50 border-red-200 text-red-700" />
         </div>
