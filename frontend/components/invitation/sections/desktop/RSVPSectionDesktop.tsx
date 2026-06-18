@@ -164,7 +164,7 @@ export default function RSVPSectionDesktop({ token, nombreFamilia, ApellidosFami
             Confirma tu Asistencia
           </p>
           <p className="font-principal text-sm text-azul/60 tracking-[0.06em] mb-8">
-            Por favor confirmar antes del {DEADLINE[rondaInvitado ?? 1] ?? DEADLINE[1]}
+            Por favor confirmar antes del {getDeadline(rondaInvitado)}
           </p>
 
           {status === 'confirmado' && <StatusConfirmado pasesConfirmados={pases} />}
