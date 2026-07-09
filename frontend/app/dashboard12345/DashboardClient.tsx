@@ -126,6 +126,63 @@ function NumberStepper({ label, value, onChange, min = 0, max }: NumberStepperPr
   );
 }
 
+interface FamiliarDeRadioProps {
+  name: string;
+  value: FamiliarDe | '' | null | undefined;
+  onChange: (v: FamiliarDe) => void;
+  required?: boolean;
+}
+function FamiliarDeRadio({ name, value, onChange, required }: FamiliarDeRadioProps) {
+  return (
+    <div>
+      <label className="block text-xs font-medium text-gray-600 mb-1">
+        Familiar de{required ? ' *' : ''}
+      </label>
+      <div className="flex items-center gap-5 px-3 py-2 rounded-lg border border-gray-200">
+        {(['novio', 'novia'] as const).map(opt => (
+          <label key={opt} className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
+            <input
+              type="radio"
+              name={name}
+              value={opt}
+              required={required}
+              checked={value === opt}
+              onChange={() => onChange(opt)}
+              className="accent-gray-900"
+            />
+            {opt === 'novio' ? 'Novio' : 'Novia'}
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+interface PhoneFieldsProps {
+  lada: string;
+  num: string;
+  onLadaChange: (v: string) => void;
+  onNumChange: (v: string) => void;
+}
+function PhoneFields({ lada, num, onLadaChange, onNumChange }: PhoneFieldsProps) {
+  return (
+    <div className="grid grid-cols-[90px_1fr] gap-3">
+      <div>
+        <label className="block text-xs font-medium text-gray-600 mb-1">Lada</label>
+        <input type="text" value={lada}
+          onChange={e => onLadaChange(e.target.value.replace(/[^\d+]/g, ''))}
+          className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300" />
+      </div>
+      <div>
+        <label className="block text-xs font-medium text-gray-600 mb-1">Número telefónico</label>
+        <input type="tel" inputMode="numeric" value={num} placeholder="10 dígitos"
+          onChange={e => onNumChange(e.target.value.replace(/\D/g, ''))}
+          className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300" />
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function DashboardClient({
