@@ -622,6 +622,15 @@ export default function DashboardClient({
                 <span className="text-xs px-1.5 py-0.5 rounded-md bg-white/20 text-white">{activeFilterCount}</span>
               )}
             </button>
+            <button onClick={exportCsv} disabled={filtered.length === 0}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Exportar
+            </button>
           </div>
 
           {showFilters && (
