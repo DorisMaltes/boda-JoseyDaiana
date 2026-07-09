@@ -586,7 +586,7 @@ export default function DashboardClient({
               <tbody className="divide-y divide-gray-50">
                 {filtered.length === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-5 py-10 text-center text-gray-400">
+                    <td colSpan={10} className="px-5 py-10 text-center text-gray-400">
                       No hay invitados en esta categoría
                     </td>
                   </tr>
