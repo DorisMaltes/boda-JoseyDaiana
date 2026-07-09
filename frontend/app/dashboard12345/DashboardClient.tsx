@@ -21,7 +21,10 @@ export interface DashboardGuest {
   mensajeParanovios?: string | null;
 
   rondaInvitado: number;
-  
+  familiarDe?: FamiliarDe | null;
+  ladaTelefonica?: string | null;
+  numTelefonico?: string | null;
+
   respondedAt?: string | null;
   confirmedAt?: string | null;
   created_at: string;
