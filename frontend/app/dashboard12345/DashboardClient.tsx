@@ -333,6 +333,9 @@ export default function DashboardClient({
     g.nombreFamilia.toLowerCase().includes(query) ||
     (g.ApellidosFamilia ?? '').toLowerCase().includes(query)
   );
+  if (filters.familiarDe) filtered = filtered.filter(g => g.familiarDe === filters.familiarDe);
+  if (filters.ronda) filtered = filtered.filter(g => g.rondaInvitado === Number(filters.ronda));
+  if (filters.esFamilia) filtered = filtered.filter(g => (g.esFamilia ?? false) === (filters.esFamilia === 'si'));
   if (sortByDate !== null) {
     filtered = [...filtered].sort((a, b) => {
       const ta = a.confirmedAt ? new Date(a.confirmedAt).getTime() : 0;
