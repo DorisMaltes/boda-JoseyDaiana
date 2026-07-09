@@ -429,6 +429,12 @@ export default function DashboardClient({
               <NumberStepper label="Ronda" value={editForm.rondaInvitado ?? 1} min={1} max={3}
                 onChange={v => setEditForm(p => ({ ...p, rondaInvitado: v }))} />
             </div>
+            <FamiliarDeRadio name="edit-familiarDe"
+              value={editForm.familiarDe}
+              onChange={v => setEditForm(p => ({ ...p, familiarDe: v }))} />
+            <PhoneFields lada={editForm.ladaTelefonica ?? ''} num={editForm.numTelefonico ?? ''}
+              onLadaChange={v => setEditForm(p => ({ ...p, ladaTelefonica: v }))}
+              onNumChange={v => setEditForm(p => ({ ...p, numTelefonico: v }))} />
             <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
               <input type="checkbox" checked={editForm.esFamilia ?? false}
                 onChange={e => setEditForm(p => ({ ...p, esFamilia: e.target.checked }))}
