@@ -265,7 +265,10 @@ export default function DashboardClient({
       pasesAsignados: g.pasesAsignados,
       pasesConfirmados: g.pasesConfirmados,
       statusRSVP: g.statusRSVP,
-      rondaInvitado: g.rondaInvitado
+      rondaInvitado: g.rondaInvitado,
+      familiarDe: g.familiarDe ?? undefined,
+      ladaTelefonica: g.ladaTelefonica ?? '+52',
+      numTelefonico: g.numTelefonico ?? '',
     });
     setEditTarget(g);
     setActionError(null);
