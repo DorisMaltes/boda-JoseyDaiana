@@ -567,6 +567,8 @@ export default function DashboardClient({
                 <tr className="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">
                   <th className="px-5 py-3">Invitado</th>
                   <th className="px-5 py-3">Familia</th>
+                  <th className="px-5 py-3 text-center">Familiar de</th>
+                  <th className="px-5 py-3">Teléfono</th>
                   <th className="px-5 py-3">Estado</th>
                   <th className="px-5 py-3 text-center">Pases Asignados</th>
                   <th className="px-5 py-3 text-center">Pases Confirmados</th>
