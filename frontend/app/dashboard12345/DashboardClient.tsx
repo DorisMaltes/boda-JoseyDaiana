@@ -244,11 +244,14 @@ export default function DashboardClient({
           esFamilia: createForm.esFamilia,
           pasesAsignados: Number(createForm.pasesAsignados),
           rondaInvitado: Number(createForm.rondaInvitado),
+          familiarDe: createForm.familiarDe,
+          ladaTelefonica: createForm.ladaTelefonica || undefined,
+          numTelefonico: createForm.numTelefonico || undefined,
         }),
       }, token);
       setGuests(prev => [...prev, created]);
       setShowCreate(false);
-      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false, rondaInvitado: '1' });
+      setCreateForm({ nombreFamilia: '', ApellidosFamilia: '', pasesAsignados: '1', esFamilia: false, rondaInvitado: '1', familiarDe: '', ladaTelefonica: '+52', numTelefonico: '' });
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'Error al crear invitado');
     }
