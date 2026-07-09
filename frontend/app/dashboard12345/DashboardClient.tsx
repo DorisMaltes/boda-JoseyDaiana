@@ -52,6 +52,11 @@ function formatDate(iso: string | null | undefined) {
   });
 }
 
+function csvCell(value: string | number | null | undefined) {
+  const s = String(value ?? '');
+  return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+
 // ── Modal helpers ─────────────────────────────────────────────────────────────
 
 interface ModalProps { onClose: () => void; children: React.ReactNode }
