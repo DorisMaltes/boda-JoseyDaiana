@@ -351,6 +351,39 @@ export default function DashboardClient({
 
   const mensajes = guests.filter(g => g.mensajeParanovios?.trim());
 
+  // ── Exportar CSV (los invitados visibles en la tabla) ──────────────────────
+  function exportCsv() {
+    const headers = [
+      'Nombre', 'Apellidos', 'Es familia', 'Familiar de', 'Lada', 'Número telefónico',
+      'Estado', 'Pases asignados', 'Pases confirmados', 'Ronda', 'Confirmó', 'Mensaje', 'URL invitación',
+    ];
+    const rows = filtered.map(g => [
+      g.nombreFamilia,
+      g.ApellidosFamilia ?? '',
+      g.esFamilia ? 'Sí' : 'No',
+      g.familiarDe === 'novio' ? 'Novio' : g.familiarDe === 'novia' ? 'Novia' : '',
+      g.ladaTelefonica ?? '',
+      g.numTelefonico ?? '',
+      STATUS_LABEL[g.statusRSVP],
+      g.pasesAsignados,
+      g.pasesConfirmados,
+      g.rondaInvitado,
+      formatDate(g.confirmedAt ?? g.respondedAt),
+      g.mensajeParanovios ?? '',
+      `https://www.joseaydaiana.com/i/${g.token}`,
+    ]);
+    const csv = [headers, ...rows].map(row => row.map(csvCell).join(',')).join('\r\n');
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `invitados-boda-${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   const tabs: { key: FilterTab; label: string; count: number }[] = [
     { key: 'todos', label: 'Todos', count: guests.length },
     { key: 'confirmado', label: 'Confirmados', count: confirmados.length },
