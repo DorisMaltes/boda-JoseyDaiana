@@ -18,6 +18,9 @@ export interface DashboardGuest {
   confirmedAt?: string | null;
   created_at: string;
   rondaInvitado: number;
+  familiarDe?: 'novio'|'novia'|null;
+  ladaTelefonica?: string|null;
+  numTelefonico?: string|null;
 
 }
 
@@ -46,7 +49,9 @@ export async function createGuest(payload: CreateGuestPayload): Promise<Dashboar
       pasesConfirmados: 0,
       statusRSVP: 'pendiente',
       rondaInvitado: payload.rondaInvitado ?? 1,
-
+      familiarDe: payload.familiarDe,
+      ladaTelefonica: payload.ladaTelefonica ?? '+52',
+      numTelefonico: payload.numTelefonico ?? null,
     })
     .select()
     .single();

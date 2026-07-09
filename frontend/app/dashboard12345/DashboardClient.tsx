@@ -373,7 +373,7 @@ export default function DashboardClient({
       `https://www.joseaydaiana.com/i/${g.token}`,
     ]);
     const csv = [headers, ...rows].map(row => row.map(csvCell).join(',')).join('\r\n');
-    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -653,7 +653,6 @@ export default function DashboardClient({
                   <option value="">Todas</option>
                   <option value="1">Ronda 1</option>
                   <option value="2">Ronda 2</option>
-                  <option value="3">Ronda 3</option>
                 </select>
               </div>
               <div>

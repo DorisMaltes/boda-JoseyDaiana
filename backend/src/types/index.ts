@@ -1,4 +1,5 @@
 export type RsvpStatus = 'pendiente' | 'confirmado' | 'declinado';
+export type FamiliarDe = 'novio'|'novia';
 
 export interface Guest {
   id: number;
@@ -28,6 +29,9 @@ export interface CreateGuestPayload {
   esFamilia?: boolean;
   pasesAsignados: number;
   rondaInvitado?: number;
+  familiarDe: FamiliarDe;
+  ladaTelefonica?: string; 
+  numTelefonico?: string; 
 
 }
 
@@ -41,5 +45,8 @@ export interface UpdateGuestPayload {
   statusRSVP?: RsvpStatus;
   mensajeParanovios?: string;
   rondaInvitado?: number;
+  familiarDe?: FamiliarDe;
+  ladaTelefonica?: string; 
+  numTelefonico?: string; 
 }
 

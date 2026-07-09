@@ -14,6 +14,10 @@ const createGuestSchema = z.object({
   esFamilia: z.boolean().optional(),
   pasesAsignados: z.number().int().min(1),
   rondaInvitado: z.number().int().min(1),
+  familiarDe: z.enum(['novio','novia']),
+  ladaTelefonica: z.string().min(1).optional(),
+  numTelefonico: z.string().regex(/^\d+$/, 'Solo dígitos').optional(),
+
 });
 
 const updateGuestSchema = z.object({
@@ -25,6 +29,9 @@ const updateGuestSchema = z.object({
   statusRSVP: z.enum(['pendiente', 'confirmado', 'declinado']).optional(),
   rondaInvitado: z.number().int().min(1).optional(),
   mensajeParanovios: z.string().optional(),
+  familiarDe: z.enum(['novio','novia']).optional(),
+  ladaTelefonica: z.string().min(1).optional(),
+  numTelefonico: z.string().regex(/^\d+$/, 'Solo dígitos').optional(),
 });
 
 export async function getDashboardGuests(

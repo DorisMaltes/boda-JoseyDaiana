@@ -14,6 +14,7 @@ export interface Guest {
   created_at: string;
   mensajeParanovios?: Mensaje;
   rondaInvitado: number;
+  
 }
 
 export interface RsvpPayload {
