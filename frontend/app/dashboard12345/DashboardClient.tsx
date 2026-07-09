@@ -197,6 +197,14 @@ export default function DashboardClient({
   const [filter, setFilter] = useState<FilterTab>('todos');
   const [search, setSearch] = useState('');
   const [sortByDate, setSortByDate] = useState<'asc' | 'desc' | null>(null);
+  const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState({
+    familiarDe: '' as '' | FamiliarDe,
+    ronda: '' as '' | '1' | '2' | '3',
+    esFamilia: '' as '' | 'si' | 'no',
+  });
+  const activeFilterCount =
+    (filters.familiarDe ? 1 : 0) + (filters.ronda ? 1 : 0) + (filters.esFamilia ? 1 : 0);
   const [actionError, setActionError] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<number | null>(null);
 
