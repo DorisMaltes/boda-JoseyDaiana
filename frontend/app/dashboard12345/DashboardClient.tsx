@@ -570,7 +570,63 @@ export default function DashboardClient({
             <input type="text" value={search} onChange={e => setSearch(e.target.value)}
               placeholder="Buscar por familia o apellido…"
               className="w-full sm:w-64 px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300" />
+            <button onClick={() => setShowFilters(s => !s)}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border text-sm font-medium whitespace-nowrap transition-colors ${
+                showFilters || activeFilterCount > 0
+                  ? 'border-gray-900 bg-gray-900 text-white'
+                  : 'border-gray-200 text-gray-600 hover:bg-gray-100'
+              }`}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+              </svg>
+              Filtrar
+              {activeFilterCount > 0 && (
+                <span className="text-xs px-1.5 py-0.5 rounded-md bg-white/20 text-white">{activeFilterCount}</span>
+              )}
+            </button>
           </div>
+
+          {showFilters && (
+            <div className="flex flex-wrap items-end gap-3 px-4 py-3 border-b border-gray-100 bg-gray-50/60">
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">Familiar de</label>
+                <select value={filters.familiarDe}
+                  onChange={e => setFilters(p => ({ ...p, familiarDe: e.target.value as '' | FamiliarDe }))}
+                  className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-gray-300">
+                  <option value="">Todos</option>
+                  <option value="novio">Novio</option>
+                  <option value="novia">Novia</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">Ronda</label>
+                <select value={filters.ronda}
+                  onChange={e => setFilters(p => ({ ...p, ronda: e.target.value as '' | '1' | '2' | '3' }))}
+                  className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-gray-300">
+                  <option value="">Todas</option>
+                  <option value="1">Ronda 1</option>
+                  <option value="2">Ronda 2</option>
+                  <option value="3">Ronda 3</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-600 mb-1">Es familia</label>
+                <select value={filters.esFamilia}
+                  onChange={e => setFilters(p => ({ ...p, esFamilia: e.target.value as '' | 'si' | 'no' }))}
+                  className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-gray-300">
+                  <option value="">Todos</option>
+                  <option value="si">Sí</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              {activeFilterCount > 0 && (
+                <button onClick={() => setFilters({ familiarDe: '', ronda: '', esFamilia: '' })}
+                  className="px-3 py-1.5 rounded-lg text-sm text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                  Limpiar filtros
+                </button>
+              )}
+            </div>
+          )}
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
