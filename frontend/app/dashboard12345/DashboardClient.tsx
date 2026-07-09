@@ -597,6 +597,20 @@ export default function DashboardClient({
                     <td className="px-5 py-3.5 text-gray-500 whitespace-nowrap">
                       {g.esFamilia ? (g.ApellidosFamilia ?? '-') : '-'}
                     </td>
+                    <td className="px-5 py-3.5 text-center">
+                      {g.familiarDe ? (
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                          g.familiarDe === 'novio' ? 'bg-sky-100 text-sky-800' : 'bg-rose-100 text-rose-800'
+                        }`}>
+                          {g.familiarDe === 'novio' ? 'Novio' : 'Novia'}
+                        </span>
+                      ) : (
+                        <span className="text-gray-400">—</span>
+                      )}
+                    </td>
+                    <td className="px-5 py-3.5 text-gray-500 whitespace-nowrap">
+                      {g.numTelefonico ? `${g.ladaTelefonica ?? ''} ${g.numTelefonico}`.trim() : '—'}
+                    </td>
                     <td className="px-5 py-3.5">
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${STATUS_BADGE[g.statusRSVP]}`}>
                         {STATUS_LABEL[g.statusRSVP]}
