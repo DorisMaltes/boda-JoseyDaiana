@@ -216,6 +216,8 @@ export default function DashboardClient({
     nombreFamilia: '', ApellidosFamilia: '',
     pasesAsignados: '1', esFamilia: false,
     rondaInvitado: '1',
+    familiarDe: '' as FamiliarDe | '',
+    ladaTelefonica: '+52', numTelefonico: '',
   });
 
   // ── Edit form state ─────────────────────────────────────────────────────────
