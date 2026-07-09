@@ -286,6 +286,9 @@ export default function DashboardClient({
           pasesAsignados: Number(editForm.pasesAsignados),
           pasesConfirmados: Number(editForm.pasesConfirmados),
           ApellidosFamilia: editForm.esFamilia ? (editForm.ApellidosFamilia || undefined) : undefined,
+          familiarDe: editForm.familiarDe ?? undefined,
+          ladaTelefonica: editForm.ladaTelefonica || undefined,
+          numTelefonico: editForm.numTelefonico || undefined,
         }),
       }, token);
       setGuests(prev => prev.map(g => g.id === updated.id ? updated : g));
