@@ -358,12 +358,18 @@ export default function DashboardClient({
                 onChange={e => setCreateForm(p => ({ ...p, nombreFamilia: e.target.value }))}
                 className="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300" />
             </div>
+            <FamiliarDeRadio name="create-familiarDe" required
+              value={createForm.familiarDe}
+              onChange={v => setCreateForm(p => ({ ...p, familiarDe: v }))} />
             <div className="grid grid-cols-2 gap-3">
               <NumberStepper label="Pases asignados *" value={Number(createForm.pasesAsignados)} min={1}
                 onChange={v => setCreateForm(p => ({ ...p, pasesAsignados: String(v) }))} />
               <NumberStepper label="Ronda *" value={Number(createForm.rondaInvitado)} min={1} max={3}
                 onChange={v => setCreateForm(p => ({ ...p, rondaInvitado: String(v) }))} />
             </div>
+            <PhoneFields lada={createForm.ladaTelefonica} num={createForm.numTelefonico}
+              onLadaChange={v => setCreateForm(p => ({ ...p, ladaTelefonica: v }))}
+              onNumChange={v => setCreateForm(p => ({ ...p, numTelefonico: v }))} />
             <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
               <input type="checkbox" checked={createForm.esFamilia}
                 onChange={e => setCreateForm(p => ({ ...p, esFamilia: e.target.checked }))}
