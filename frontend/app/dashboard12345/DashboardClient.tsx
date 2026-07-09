@@ -7,6 +7,7 @@ import { createSupabaseBrowserClient } from '@/lib/supabaseClient';
 import { apiFetch } from '@/lib/api';
 
 type RsvpStatus = 'pendiente' | 'confirmado' | 'declinado';
+type FamiliarDe = 'novio' | 'novia';
 
 export interface DashboardGuest {
   id: number;
