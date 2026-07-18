@@ -648,7 +648,7 @@ export default function DashboardClient({
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Ronda</label>
                 <select value={filters.ronda}
-                  onChange={e => setFilters(p => ({ ...p, ronda: e.target.value as '' | '1' | '2' | '3' }))}
+                  onChange={e => setFilters(p => ({ ...p, ronda: e.target.value as '' | '1' | '2' | '3' | '4'}))}
                   className="px-3 py-1.5 rounded-lg border border-gray-200 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-gray-300">
                   <option value="">Todas</option>
                   <option value="1">Ronda 1</option>
