@@ -475,7 +475,7 @@ export default function DashboardClient({
               <NumberStepper label="Pases confirmados" value={editForm.pasesConfirmados ?? 0} min={0}
                 max={editForm.pasesAsignados ?? undefined}
                 onChange={v => setEditForm(p => ({ ...p, pasesConfirmados: v }))} />
-              <NumberStepper label="Ronda" value={editForm.rondaInvitado ?? 1} min={1} max={3}
+              <NumberStepper label="Ronda" value={editForm.rondaInvitado ?? 1} min={1} max={4}
                 onChange={v => setEditForm(p => ({ ...p, rondaInvitado: v }))} />
             </div>
             <FamiliarDeRadio name="edit-familiarDe"
