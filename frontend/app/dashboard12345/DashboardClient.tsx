@@ -205,7 +205,7 @@ export default function DashboardClient({
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
     familiarDe: '' as '' | FamiliarDe,
-    ronda: '' as '' | '1' | '2' | '3',
+    ronda: '' as '' | '1' | '2' | '3' | '4', 
     esFamilia: '' as '' | 'si' | 'no',
   });
   const activeFilterCount =
@@ -413,7 +413,7 @@ export default function DashboardClient({
             <div className="grid grid-cols-2 gap-3">
               <NumberStepper label="Pases asignados *" value={Number(createForm.pasesAsignados)} min={1}
                 onChange={v => setCreateForm(p => ({ ...p, pasesAsignados: String(v) }))} />
-              <NumberStepper label="Ronda *" value={Number(createForm.rondaInvitado)} min={1} max={3}
+              <NumberStepper label="Ronda *" value={Number(createForm.rondaInvitado)} min={1} max={4}
                 onChange={v => setCreateForm(p => ({ ...p, rondaInvitado: String(v) }))} />
             </div>
             <PhoneFields lada={createForm.ladaTelefonica} num={createForm.numTelefonico}
@@ -653,6 +653,9 @@ export default function DashboardClient({
                   <option value="">Todas</option>
                   <option value="1">Ronda 1</option>
                   <option value="2">Ronda 2</option>
+                  <option value="1">Ronda 3</option>
+                  <option value="2">Ronda 4</option>
+
                 </select>
               </div>
               <div>

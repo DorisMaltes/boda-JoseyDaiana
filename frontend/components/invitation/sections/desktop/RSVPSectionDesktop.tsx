@@ -8,6 +8,7 @@ import type { RsvpStatus } from '@/types';
 function getDeadline(ronda?: number): string {
   if (ronda === 1) return '1 de julio de 2026';
   if (ronda === 2) return '1 de agosto de 2026';
+  if (ronda === 3) return '15 de agosto de 2026'
   return '1 de noviembre de 2026';
 }
 
